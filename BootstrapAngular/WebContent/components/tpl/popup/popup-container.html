@@ -1,0 +1,22 @@
+<div ng-if="popup.config.modal" class="windowModal" ng-repeat="popup in $ctrl.popups">
+    <div class="windowBox">
+        <div class="windowHeader">
+	        <span ng-if="popup.config.showClose"
+	              ng-click="$ctrl.fechar(popup.config)"
+	              class="icone fechar"
+	              title="Fechar"></span>
+            <h2>{{popup.config.titulo}}</h2>
+        </div>
+
+        <div class="windowContent">
+            <popup-component popup="popup"></popup-component>
+        </div>
+         <div class="botoes">
+         
+         		<button class="btn btn-primary" ng-click="botao.onClick()" ng-repeat="botao in popup.config.botoes">{{botao.label}}</button>
+	          <!-- <span ng-repeat="botao in popup.config.botoes">
+	              <span class="bt-expandido verde" ng-click="botao.onClick()">{{botao.label}}</span>
+	          </span> -->
+         </div>
+    </div>
+</div>

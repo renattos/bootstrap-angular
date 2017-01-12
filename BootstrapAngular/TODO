@@ -1,0 +1,37 @@
+	- Criar Layout de Formulário
+    - Criar componentes:
+OK  	- Caixa de texto
+			- criar propriedade case-sensitive="lower upper normal(default)"
+			- criar propriedade minlength
+			- criar propriedade para largura do campo
+			- criar propriedade para os eventHandlers (click, blur, etc)
+			
+OK  	- Telefone (textbased-template)
+OK      - CPF (textbased-template)
+OK      - CNPJ (textbased-template)
+OK  	- CEP (textbased-template)
+			- Corrigir mascara: tá aceitando mais que o maxlength
+OK      - hour (textbased-template)
+			- Corrigir mascara: tá aceitando mais que o maxlength
+        - date 
+        	- Implementar a troca de mês e ano
+OK      	- Escolher o dia
+OK        	- Bloquear digitar
+        	- o model deve ser atribuido de acordo com o valor recebido: type="auto" ou (String, Date, Number(timestamp))
+        	- range válido (limite inferior e/ou superior)
+    	- Combobox
+    	- Checkbox
+    	- RadioButtons
+    	- SimNao (radio button)
+        - period (date, hour, datetime)
+    	- Grids
+		- money
+    	- Popups
+    	- Tabs
+		- numero (int, decimal) (textbased-template) (o model deve receber um Number)
+		- Estado-Cidade
+		- custom-component
+    - Criar uma Sidenav do lado esquerdo com o botão toggle para dispositivos móveis
+    - Trazer a infra de "Plataforma" (angular material) para o projeto com bootstrap
+    - Criar um componente para o NavBar em angular para tirar o bootstrapJS e JQuery do projeto
+    - Criar Layout para a tela inicial

@@ -1,0 +1,12 @@
+<div>
+	<ul class="nav nav-tabs">
+		<li ng-repeat="pane in panes" 
+		    ng-class="{active:pane.selected}"
+		>
+		    <a class="tablink" ng-click="selectPane(pane)"> {{pane.title}} </a>
+		</li>
+	</ul>
+	<div ng-show="pane.selected" ng-repeat="pane in panes">
+		<directive insert="{{pane.body}}"/>
+	</div>
+</div>

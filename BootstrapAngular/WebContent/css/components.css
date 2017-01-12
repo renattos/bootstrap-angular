@@ -1,0 +1,64 @@
+.nav-tabs *:hover {
+	cursor: pointer; 
+}
+
+
+.windowModal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 118, 128, .7);
+    z-index: 9998;
+}
+
+.windowBox {
+    min-width: 5rem;
+    max-width: 73.75rem;
+    background-color: #FFF;
+    z-index: 9999;
+    padding: 1rem;
+    line-height: 1.5rem;
+    position: fixed;
+    margin: 0 auto;
+    top: 6.25rem;
+    left: 0;
+    right: 0;
+    max-height: calc(100% - 12.5rem);
+    overflow: auto;
+}
+
+
+.windowHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* background-color: #696969;  */
+    background-color: #428bca;
+    padding: .5rem 1rem;
+	-webkit-box-shadow: 0 0.125rem 0.1875rem 0 #aaa;
+	   -moz-box-shadow: 0 0.125rem 0.1875rem 0 #aaa;
+	        box-shadow: 0 0.125rem 0.1875rem 0 #aaa;
+}
+
+.windowHeader h2 {
+    text-align: left;
+    color: #FFF;
+    font-size: 1.15rem;
+}
+
+.windowHeader .fechar {
+    float: right;
+    color: #FFF;
+}
+
+.windowContent {
+    overflow: auto;
+    margin-top: 5rem;
+}
+
+.calendarDay {
+	text-align: center;
+}

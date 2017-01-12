@@ -1,0 +1,52 @@
+<div class="table-responsive">
+  <!-- <table class="table table-condensed table-striped table-bordered table-hover no-margin">
+    <thead>
+      <tr>
+        <th style="width:5%">
+          
+        </th>
+        <th style="width:85%">Escola</th>
+        <th style="width:10%" class="hidden-phone">Situacao</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="m in models">
+        <td>
+		  <a href="" title="Editar" ng-click="prepareEdit(m.codigo)"> <span class="glyphicon glyphicon-edit" /></a>
+		  <a href="" title="Excluir" ng-click="excluir(m.codigo)"> <span class="glyphicon glyphicon-remove-sign" /></a>
+        </td>
+        <td>
+          <span class="name">({{ m.codigo }}) - {{m.nome}}</span>
+        </td>
+        <td class="hidden-phone">{{m.isAtivo ? 'Ativo' : 'Inativo'}}</td>
+       
+      </tr>
+      <tr ng-show="models.length == 0">
+        
+        <td colspan='3'> 
+          <span class="name">Não há registros cadastrados.</span>
+        </td>
+        </tr>
+    </tbody>
+  </table> -->
+  <table class="table table-condensed table-striped table-bordered table-hover no-margin">
+	<thead>
+		<tr>
+		   <th ng-repeat="c in columns">{{c.title}}</th>
+		 </tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="data in datasource">
+			<td ng-repeat="c in columns">{{data[c.field]}}</td>
+		</tr>
+		
+		<tr ng-show="datasource.length == 0">
+        
+        <td colspan="{{columns.length}}"> 
+          <span class="name">N�o existem registros a serem exibidos.</span>
+        </td>
+        </tr>
+	</tbody>
+</table>
+</div>
+
