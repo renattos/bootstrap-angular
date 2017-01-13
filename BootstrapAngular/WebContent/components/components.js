@@ -50,8 +50,18 @@ angular.module('components', [])
 })
 /****************************************************************************************************************************************************/ 
 /*
- * COMPONENTE MENU LATERAL ESQUERDO (SIDEBAR)
+ * COMPONENTES DE LAYOUT
  * */
+.component('navbar', {
+	templateUrl: 'components/tpl/navbar/navbar.component.tpl.html',
+	bindings: {
+		itens: '=',
+		brand: '@'
+	},
+	controller: function () {
+		var ctrl = this;
+	}
+})
 .component('sidebar', {
     templateUrl: 'components/tpl/sidebar/sidebar.component.tpl.html',
     bindings: {
@@ -59,10 +69,6 @@ angular.module('components', [])
     },
     controller: function () {
         var ctrl = this;
-        console.log('this', this);
-        console.log('title', this.title);
-        console.log('elementos', this.itens);
-
     }
 })
 .component('tree', {
