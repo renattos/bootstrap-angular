@@ -1,5 +1,118 @@
 angular.module('components', [])
+/****************************************************************************************************************************************************/  
+/*
+ * DIRETIVA PARA CONFIGURACAO DOS ITENS DE LAYOUT
+ * */
+.factory('PlatformService', function(){
+	return {
+		modules: {app: []},
+		sidebar: {
+			visible: true,
+			disabled: false,
+			itens: []
+		},
+		
+		navbar: {
+			itens: []
+		},
+		
+/*		setSidebarVisible: function(visibility){
+			this.sidebar.visible = ( visibility ? true : false )
+		},
+		
+		setSidebarDisabled: function(disabled){
+			this.sidebar.disabled = ( disabled ? true : false )
+		},*/
+		
+		registerModule: function(module, group){
+			if(group){
+				if(this.modules[group])
+					this.modules[group].push(module);
+				else {
+					this.modules[group] = [];
+					this.modules[group].push(module);
+				}
+			}
+			else {
+				this.modules['app'].push(module);
+			} 
+		},
+		
+		getModules: function(group){
+			console.log('getModules', this.modules);
+			console.log('Group', group);
+			if(group)
+				return this.modules[group];
+			else
+				return this.modules['app'];
+		}
+	};
+})
+/****************************************************************************************************************************************************/ 
+/*
+ * COMPONENTE MENU LATERAL ESQUERDO (SIDEBAR)
+ * */
+.component('sidebar', {
+    templateUrl: 'components/tpl/sidebar/sidebar.component.tpl.html',
+    bindings: {
+        itens: '='
+    },
+    controller: function () {
+        var ctrl = this;
+        console.log('this', this);
+        console.log('title', this.title);
+        console.log('elementos', this.itens);
 
+    }
+})
+.component('tree', {
+    templateUrl: 'components/tpl/sidebar/sidemenu.component.tpl.html',
+    bindings: {
+        itens: '=',
+        title: '@'
+    },
+    controller: function () {
+        var ctrl = this;
+        console.log('this', this);
+        console.log('title', this.title);
+        console.log('elementos', this.itens);
+
+    }
+})
+.component('node', {
+    templateUrl: 'components/tpl/sidebar/sidemenuitem.component.tpl.html',
+    bindings: {
+        node: '='
+    },
+    controller: function () {
+        var ctrl = this;
+        ctrl.expanded = true;
+        
+        ctrl.toggle = function(){
+        	ctrl.expanded = !ctrl.expanded;
+        }
+    }
+})
+
+.component('application', {
+    templateUrl: 'components/tpl/application.tpl.html',
+    bindings: {
+        brand: '@'
+    },
+    controller: function (PlatformService) {
+        var ctrl = this;
+        
+        ctrl.sidebar = PlatformService.sidebar;
+        ctrl.navbar  = PlatformService.navbar;
+        
+        ctrl.toggleSidebar = function(){
+        	ctrl.sidebar.visible = !ctrl.sidebar.visible; 
+        }
+
+    }
+})
+
+/****************************************************************************************************************************************************/ 
 /*
  * DIRETIVAS UTILITARIAS
  * */
