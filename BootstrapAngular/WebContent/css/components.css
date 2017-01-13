@@ -62,3 +62,18 @@
 .calendarDay {
 	text-align: center;
 }
+
+/****************************************************************/
+html, body, .container-fluid, .row {
+	height: 100%;
+}
+
+.sidebar-left {
+	position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: block;
+    background-color: #CCCCCC;
+}
