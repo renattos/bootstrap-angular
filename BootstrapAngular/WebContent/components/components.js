@@ -1,52 +1,34 @@
-angular.module('components', [])
+angular.module('components', ['platform','ui.router'])
+
+
 /****************************************************************************************************************************************************/  
 /*
- * DIRETIVA PARA CONFIGURACAO DOS ITENS DE LAYOUT
+ * CONFIGURACAO DA PRIMEIRA ROTA
  * */
-.factory('PlatformService', function(){
-	return {
-		modules: {app: []},
-		sidebar: {
-			visible: true,
-			disabled: false,
-			itens: []
-		},
-		
-		navbar: {
-			itens: []
-		},
-		
-/*		setSidebarVisible: function(visibility){
-			this.sidebar.visible = ( visibility ? true : false )
-		},
-		
-		setSidebarDisabled: function(disabled){
-			this.sidebar.disabled = ( disabled ? true : false )
-		},*/
-		
-		registerModule: function(module, group){
-			if(group){
-				if(this.modules[group])
-					this.modules[group].push(module);
-				else {
-					this.modules[group] = [];
-					this.modules[group].push(module);
-				}
-			}
-			else {
-				this.modules['app'].push(module);
-			} 
-		},
-		
-		getModules: function(group){
-			console.log('getModules', this.modules);
-			console.log('Group', group);
-			if(group)
-				return this.modules[group];
-			else
-				return this.modules['app'];
-		}
-	};
+.run(['$rootScope', '$state','PlatformService', function($rootScope, $state, PlatformService) {
+
+	PlatformService.reset();
+	
+    $rootScope.$on('$stateChangeStart', function(evt, to, params) {
+      if (to.redirectTo) {
+        evt.preventDefault();
+        $state.go(to.redirectTo, params)
+      }
+    });
+}])
+.config(function($stateProvider, $urlRouterProvider) {
+	
+	  
+	
+	  $urlRouterProvider.otherwise("/home");
+
+	  //Indica o estado inicial como home
+	  $stateProvider
+		    .state('home', {
+		      url: "/home",
+		      templateUrl: "app/home.html",
+		      controller: 'AppCtrl' 
+		    })
 })
 /****************************************************************************************************************************************************/ 
 /*
@@ -58,8 +40,20 @@ angular.module('components', [])
 		itens: '=',
 		brand: '@'
 	},
-	controller: function () {
+	controller: function (PlatformService) {
 		var ctrl = this;
+		
+		ctrl.select = function(item){
+			
+			PlatformService.selectModule(item);
+			
+			/*if(ctrl.activeItem){
+				ctrl.activeItem.active = false;
+			}
+			item.active = true;
+			ctrl.activeItem = item;*/
+		}
+		
 	}
 })
 .component('sidebar', {
@@ -107,9 +101,8 @@ angular.module('components', [])
     },
     controller: function (PlatformService) {
         var ctrl = this;
-        
+        ctrl.appModules = PlatformService.getModules();
         ctrl.sidebar = PlatformService.sidebar;
-        ctrl.navbar  = PlatformService.navbar;
         
         ctrl.toggleSidebar = function(){
         	ctrl.sidebar.visible = !ctrl.sidebar.visible; 

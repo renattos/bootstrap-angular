@@ -1,5 +1,5 @@
 <div class="container-fluid col-xs-12">
-	<navbar itens="$ctrl.navbar.itens" brand="{{$ctrl.brand}}"/>
+	<navbar itens="$ctrl.appModules" brand="{{$ctrl.brand}}"/>
 
 	<div class="row">
 	    
@@ -8,7 +8,7 @@
 	    </div>
 	    
 	    <div class="col-md-10 content"  ng-class="{'col-md-offset-2 col-xs-offset-10 col-sm-offset-10': $ctrl.sidebar.visible}">
-		    	content {{$ctrl.sidebar.visible}}
+		    	<div ui-view></div>
 	    </div> 
 	
 	</div>

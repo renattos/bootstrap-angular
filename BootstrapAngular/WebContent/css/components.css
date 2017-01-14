@@ -85,14 +85,9 @@ html, body, .container-fluid, .row {
 .left-hamburguer {
   float: left;
 }
-/* 
-.left-hamburguer .icon-bar+.icon-bar {
-	margin-top: 4px;
+
+.navbar-inverse .navbar-nav>.active>a, 
+.navbar-inverse .navbar-nav>.active>a:focus, 
+.navbar-inverse .navbar-nav>.active>a:hover {
+	background-color: #585858; /*background dos botoes na barra de navegacao superior*/
 }
-.left-hamburguer .icon-bar {
-	display: block;
-	width: 22px;
-	height: 2px;
-	border-radius: 1px;
-}
- */
