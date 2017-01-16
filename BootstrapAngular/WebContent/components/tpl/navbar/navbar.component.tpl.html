@@ -1,0 +1,27 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+   <div class="container-fluid">
+     <div class="navbar-header col-sm-4 col-md-2" >
+     	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarID" aria-expanded="false">
+	       <span class="sr-only">Toggle navigation</span>
+	       <span class="icon-bar"></span>
+	       <span class="icon-bar"></span>
+	       <span class="icon-bar"></span>
+	    </button>
+     	
+	    <button type="button" class="navbar-toggle left-hamburguer" ng-click="$ctrl.toggleSidebar()" ng-class="{'sidebar-closed': $ctrl.sidebar.itens == 0}">
+	       <span class="sr-only">Toggle sidebar</span>
+	       <span class="icon-bar"></span>
+	       <span class="icon-bar"></span>
+	       <span class="icon-bar"></span>
+	    </button>
+		
+        <a class="navbar-brand" href="#/home">{{$ctrl.brand}}</a>
+     </div>
+     
+     <div id="navbarID" class="navbar-collapse collapse">
+       <ul class="nav navbar-nav navbar-left">
+       	  <li ng-repeat="n in $ctrl.itens" ng-class="{'active': n.active}"><a href="" ng-click="$ctrl.select(n)">{{n.name}}</a></li>
+       </ul>
+     </div>
+   </div>
+ </nav>
