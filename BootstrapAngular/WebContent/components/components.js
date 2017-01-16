@@ -1,57 +1,65 @@
-angular.module('components', [])
+angular.module('components', ['platform','ui.router'])
+
+
 /****************************************************************************************************************************************************/  
 /*
- * DIRETIVA PARA CONFIGURACAO DOS ITENS DE LAYOUT
+ * CONFIGURACAO DA PRIMEIRA ROTA
  * */
-.factory('PlatformService', function(){
-	return {
-		modules: {app: []},
-		sidebar: {
-			visible: true,
-			disabled: false,
-			itens: []
-		},
-		
-		navbar: {
-			itens: []
-		},
-		
-/*		setSidebarVisible: function(visibility){
-			this.sidebar.visible = ( visibility ? true : false )
-		},
-		
-		setSidebarDisabled: function(disabled){
-			this.sidebar.disabled = ( disabled ? true : false )
-		},*/
-		
-		registerModule: function(module, group){
-			if(group){
-				if(this.modules[group])
-					this.modules[group].push(module);
-				else {
-					this.modules[group] = [];
-					this.modules[group].push(module);
-				}
-			}
-			else {
-				this.modules['app'].push(module);
-			} 
-		},
-		
-		getModules: function(group){
-			console.log('getModules', this.modules);
-			console.log('Group', group);
-			if(group)
-				return this.modules[group];
-			else
-				return this.modules['app'];
-		}
-	};
+.run(['$rootScope', '$state','PlatformService', function($rootScope, $state, PlatformService) {
+
+	PlatformService.reset();
+	
+    $rootScope.$on('$stateChangeStart', function(evt, to, params) {
+//    	console.log('state change start', to);
+    	PlatformService.sidebar.itens = [];
+    	PlatformService.selectByState(to.name);
+      if (to.redirectTo) {
+        evt.preventDefault();
+        $state.go(to.redirectTo, params)
+      }
+    });
+}])
+.config(function($stateProvider, $urlRouterProvider) {
+	
+	
+	  $urlRouterProvider.otherwise("/home");
+
+	  //Indica o estado inicial como home
+	  $stateProvider
+		    .state('home', {
+		      url: "/home",
+		      templateUrl: "app/home.html",
+		      controller: 'AppCtrl' 
+		    })
+		    
 })
 /****************************************************************************************************************************************************/ 
 /*
- * COMPONENTE MENU LATERAL ESQUERDO (SIDEBAR)
+ * COMPONENTES DE LAYOUT
  * */
+.component('navbar', {
+	templateUrl: 'components/tpl/navbar/navbar.component.tpl.html',
+	bindings: {
+		itens: '=',
+		brand: '@'
+	},
+	controller: function (PlatformService, $state) {
+		var ctrl = this;
+		
+		ctrl.sidebar = PlatformService.sidebar;
+		
+		ctrl.select = function(item){
+			if(PlatformService.selectModule(item)){
+				$state.go(item.state)
+			}
+		}
+		
+		ctrl.toggleSidebar = function(){
+			PlatformService.sidebar.toggle();
+		}
+		
+	}
+})
 .component('sidebar', {
     templateUrl: 'components/tpl/sidebar/sidebar.component.tpl.html',
     bindings: {
@@ -59,14 +67,11 @@ angular.module('components', [])
     },
     controller: function () {
         var ctrl = this;
-        console.log('this', this);
-        console.log('title', this.title);
-        console.log('elementos', this.itens);
-
     }
 })
 .component('tree', {
-    templateUrl: 'components/tpl/sidebar/sidemenu.component.tpl.html',
+    templateUrl: 'components/tpl/sidebar/sidebar.component.tpl.html',
+//    templateUrl: 'components/tpl/sidebar/sidemenu.component.tpl.html',
     bindings: {
         itens: '=',
         title: '@'
@@ -89,6 +94,7 @@ angular.module('components', [])
         ctrl.expanded = true;
         
         ctrl.toggle = function(){
+        	console.log('toggle node');
         	ctrl.expanded = !ctrl.expanded;
         }
     }
@@ -101,9 +107,8 @@ angular.module('components', [])
     },
     controller: function (PlatformService) {
         var ctrl = this;
-        
+        ctrl.appModules = PlatformService.getModules();
         ctrl.sidebar = PlatformService.sidebar;
-        ctrl.navbar  = PlatformService.navbar;
         
         ctrl.toggleSidebar = function(){
         	ctrl.sidebar.visible = !ctrl.sidebar.visible; 

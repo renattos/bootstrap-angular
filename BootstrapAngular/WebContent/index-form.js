@@ -18,11 +18,7 @@ Application = angular.module('FormDemo', ['components'])
 	       {name: 'Nav 2', active: true},                
 	       {name: 'Nav 3'},                
 	       {name: 'Nav 4'},                
-	       {name: 'Nav 5'},                
-	       {name: 'Nav 6'},                
-	       {name: 'Nav 7'},                
-	       {name: 'Nav 8'},                
-	       {name: 'Nav 9'}                
+	       {name: 'Nav 5'}                
 	]
 	
 	$scope.teste2 = function(){
