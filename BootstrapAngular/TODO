@@ -32,9 +32,9 @@ OK        	- Bloquear digitar
 		- Estado-Cidade
 		- custom-component
 OK  - Criar uma Sidenav do lado esquerdo com o botão toggle para dispositivos móveis
-		- Corrigir layout do Sidenav em dispositivos pequenos
+OK		- Corrigir layout do Sidenav em dispositivos pequenos
 		- Melhorar o design dos itens de menu
-    - Trazer a infra de "Plataforma" (angular material) para o projeto com bootstrap
+OK  - Trazer a infra de "Plataforma" (angular material) para o projeto com bootstrap
     - Criar um componente para o NavBar em angular para tirar o bootstrapJS e JQuery do projeto
     - Criar Layout para a tela inicial
     - Implementar a navegação por rotas (menu superior e lateral)
