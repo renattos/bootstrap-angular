@@ -10,6 +10,9 @@ angular.module('components', ['platform','ui.router'])
 	PlatformService.reset();
 	
     $rootScope.$on('$stateChangeStart', function(evt, to, params) {
+//    	console.log('state change start', to);
+    	PlatformService.sidebar.itens = [];
+    	PlatformService.selectByState(to.name);
       if (to.redirectTo) {
         evt.preventDefault();
         $state.go(to.redirectTo, params)
@@ -18,7 +21,6 @@ angular.module('components', ['platform','ui.router'])
 }])
 .config(function($stateProvider, $urlRouterProvider) {
 	
-	  
 	
 	  $urlRouterProvider.otherwise("/home");
 
@@ -29,6 +31,7 @@ angular.module('components', ['platform','ui.router'])
 		      templateUrl: "app/home.html",
 		      controller: 'AppCtrl' 
 		    })
+		    
 })
 /****************************************************************************************************************************************************/ 
 /*
@@ -40,18 +43,19 @@ angular.module('components', ['platform','ui.router'])
 		itens: '=',
 		brand: '@'
 	},
-	controller: function (PlatformService) {
+	controller: function (PlatformService, $state) {
 		var ctrl = this;
 		
+		ctrl.sidebar = PlatformService.sidebar;
+		
 		ctrl.select = function(item){
-			
-			PlatformService.selectModule(item);
-			
-			/*if(ctrl.activeItem){
-				ctrl.activeItem.active = false;
+			if(PlatformService.selectModule(item)){
+				$state.go(item.state)
 			}
-			item.active = true;
-			ctrl.activeItem = item;*/
+		}
+		
+		ctrl.toggleSidebar = function(){
+			PlatformService.sidebar.toggle();
 		}
 		
 	}
@@ -66,7 +70,8 @@ angular.module('components', ['platform','ui.router'])
     }
 })
 .component('tree', {
-    templateUrl: 'components/tpl/sidebar/sidemenu.component.tpl.html',
+    templateUrl: 'components/tpl/sidebar/sidebar.component.tpl.html',
+//    templateUrl: 'components/tpl/sidebar/sidemenu.component.tpl.html',
     bindings: {
         itens: '=',
         title: '@'
@@ -89,6 +94,7 @@ angular.module('components', ['platform','ui.router'])
         ctrl.expanded = true;
         
         ctrl.toggle = function(){
+        	console.log('toggle node');
         	ctrl.expanded = !ctrl.expanded;
         }
     }

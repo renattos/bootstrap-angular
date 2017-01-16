@@ -8,9 +8,12 @@ angular.module('platform', [])
 	return {
 		modules: {app: []},
 		sidebar: {
-			visible: false,
+			visible: true,
 			disabled: false,
-			itens: []
+			itens: [],
+			toggle: function(){
+				this.visible = !this.visible;
+			}
 		},
 		
 		navbar: {
@@ -18,7 +21,7 @@ angular.module('platform', [])
 		},
 		
 		reset: function(){
-			this.sidebar.visible = false;
+			this.sidebar.visible = true;
 			this.sidebar.itens = [];
 			this.navbar.itens = [];
 			this.modules = {app: []}
@@ -46,12 +49,29 @@ angular.module('platform', [])
 				return this.modules['app'];
 		},
 		
+		selectByState: function(currentState){
+			var appModules = this.modules['app'];
+			angular.forEach(appModules, function(module){
+	    		module.active = false;
+	    		
+	    		if(currentState && currentState.indexOf(module.state) == 0){
+	    			module.active = true;
+	    		}
+
+	    	});
+		},
+		
 		selectModule: function(m){
 			var appModules = this.modules['app'];
 			for(var i = 0; i < appModules.length; i++){
 				appModules[i].active = false;
 			}
-			m.active = true;
+			
+			if(m){
+				m.active = true;
+			}
+			
+			return true;
 		}
 	};
 });
