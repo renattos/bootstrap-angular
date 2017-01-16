@@ -38,3 +38,4 @@ OK  - Criar uma Sidenav do lado esquerdo com o botão toggle para dispositivos mó
     - Criar um componente para o NavBar em angular para tirar o bootstrapJS e JQuery do projeto
     - Criar Layout para a tela inicial
     - Implementar a navegação por rotas (menu superior e lateral)
+    - Transferir a configuração das rotas para Platform
