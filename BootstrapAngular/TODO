@@ -38,4 +38,6 @@ OK  - Trazer a infra de "Plataforma" (angular material) para o projeto com boots
     - Criar um componente para o NavBar em angular para tirar o bootstrapJS e JQuery do projeto
     - Criar Layout para a tela inicial
     - Implementar a navegação por rotas (menu superior e lateral)
+    - Corrigir o refresh dos menus do SideNav ao trocar de rota (só esvaziar o sidenav quando trocar de modulo)
+    - Ao clicar nos menus (mobile), ocultar o SideNav e o menu do NavBar
     - Transferir a configuração das rotas para Platform
