@@ -1,5 +1,4 @@
 angular.module('modulo1', [
-        'ui.router',
         'platform',
         'components'
 ])
@@ -7,40 +6,28 @@ angular.module('modulo1', [
 
 	PlatformService.registerModule({name: 'Modulo 1', state: 'modulo1'});
 	
+	PlatformService.configurarRota({
+		  name: 'modulo1',
+		  url: '/modulo1',
+		  templateUrl: "app/modulo1/modulo1.html",
+		  controller: 'modulo1.Module1Ctrl'
+	  });
+	
+	PlatformService.configurarRota({
+		name: 'modulo1.menu1',
+		url: '/menu1',
+		templateUrl: "app/modulo1/menu1.html",
+		controller: 'modulo1.Menu1Ctrl'
+	});
+	
+	PlatformService.configurarRota({
+		name: 'modulo1.menu2',
+		url: '/menu2',
+		templateUrl: "app/modulo1/menu2.html",
+		controller: 'modulo1.Menu2Ctrl'
+	});
+	
 }])
-.config(function($stateProvider, $urlRouterProvider) {
-  
-  $stateProvider
-    .state('modulo1', {
-    	url: "/modulo1",
-    	views: {
-    		'main@' : {
-    		    templateUrl: "app/modulo1/modulo1.html",
-    		    controller: 'modulo1.Module1Ctrl'
-    		}
-    	}
-      
-    })
-    .state('modulo1.menu1', {
-    	url: "/menu1",
-    	views: {
-    		'main@' : {
-    	    	templateUrl: "app/modulo1/menu1.html",
-    	    	controller: 'modulo1.Menu1Ctrl'
-    		}
-    	}    	
-    })
-    .state('modulo1.menu2', {
-    	url: "/menu2",
-    	views: {
-    		'main@' : {
-    	    	templateUrl: "app/modulo1/menu2.html",
-    	    	controller: 'modulo1.Menu2Ctrl'
-    		}
-    	}    
-    })
-    
-})
 .controller('modulo1.Module1Ctrl', function($scope, $state, PlatformService) {
 	console.log('entrou no modulo 1');
 	PlatformService.sidebar.itens.push({name: 'Menu 1.1', state:'.menu1'});

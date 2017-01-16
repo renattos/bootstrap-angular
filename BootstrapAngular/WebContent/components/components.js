@@ -1,42 +1,5 @@
-angular.module('components', ['platform','ui.router'])
+angular.module('components', ['platform'])
 
-
-/****************************************************************************************************************************************************/  
-/*
- * CONFIGURACAO DA PRIMEIRA ROTA
- * */
-.run(['$rootScope', '$state','PlatformService', function($rootScope, $state, PlatformService) {
-
-	PlatformService.reset();
-	
-    $rootScope.$on('$stateChangeStart', function(evt, to, params) {
-//    	console.log('state change start', to);
-  //  	PlatformService.sidebar.itens = [];
-    	PlatformService.selectByState(to.name);
-      if (to.redirectTo) {
-        evt.preventDefault();
-        $state.go(to.redirectTo, params)
-      }
-    });
-}])
-.config(function($stateProvider, $urlRouterProvider) {
-	
-	
-	  $urlRouterProvider.otherwise("/home");
-
-	  //Indica o estado inicial como home
-	  $stateProvider
-		    .state('home', {
-		      url: "/home",
-		      views: {
-			  		'main@' : {
-			  			templateUrl: "app/home.html",
-					    controller: 'AppCtrl'
-			  		}
-		  	  }
-		    })
-		    
-})
 /****************************************************************************************************************************************************/ 
 /*
  * COMPONENTES DE LAYOUT
@@ -75,7 +38,6 @@ angular.module('components', ['platform','ui.router'])
 })
 .component('tree', {
     templateUrl: 'components/tpl/sidebar/sidebar.component.tpl.html',
-//    templateUrl: 'components/tpl/sidebar/sidemenu.component.tpl.html',
     bindings: {
         itens: '=',
         title: '@'

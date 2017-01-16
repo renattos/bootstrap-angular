@@ -39,5 +39,6 @@ OK  - Trazer a infra de "Plataforma" (angular material) para o projeto com boots
     - Criar Layout para a tela inicial
     - Implementar a navegação por rotas (menu superior e lateral)
     - Corrigir o refresh dos menus do SideNav ao trocar de rota (só esvaziar o sidenav quando trocar de modulo)
+    	- Incluir definicao dos menus nos modulos
     - Ao clicar nos menus (mobile), ocultar o SideNav e o menu do NavBar
     - Transferir a configuração das rotas para Platform

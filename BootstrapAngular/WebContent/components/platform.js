@@ -1,11 +1,45 @@
-angular.module('platform', [])
+var PlatformModule = angular.module('platform', ['ui.router'])
 
 /****************************************************************************************************************************************************/  
 /*
  * DIRETIVA PARA CONFIGURACAO DOS ITENS DE LAYOUT
  * */
+PlatformModule.config(function($stateProvider, $urlRouterProvider){
+	
+	PlatformModule.$stateProvider = $stateProvider;
+	PlatformModule.$urlRouterProvider = $urlRouterProvider;
+	
+	$urlRouterProvider.otherwise("/home");
+
+	  //Indica o estado inicial como home
+	  $stateProvider
+		    .state('home', {
+		      url: "/home",
+		      views: {
+			  		'main@' : {
+			  			templateUrl: "app/home.html",
+					    controller: 'AppCtrl'
+			  		}
+		  	  }
+		    })
+	
+})
+.run(['$rootScope', '$state','PlatformService', function($rootScope, $state, PlatformService) {
+
+	PlatformService.reset();
+	
+    $rootScope.$on('$stateChangeStart', function(evt, to, params) {
+    	console.log('state change start', to);
+    	PlatformService.sidebar.itens = [];
+    	PlatformService.selectByState(to.name);
+      if (to.redirectTo) {
+        evt.preventDefault();
+        $state.go(to.redirectTo, params)
+      }
+    });
+}])
 .factory('PlatformService', function(){
-	return {
+	var platformService =  {
 		modules: {app: []},
 		sidebar: {
 			visible: true,
@@ -72,6 +106,36 @@ angular.module('platform', [])
 			}
 			
 			return true;
+		},
+		
+/*		configurarHome: function(){
+				
+				  $urlRouterProvider.otherwise("/home");
+
+				  //Indica o estado inicial como home
+				  this.configurarRota({
+					  name: 'home',
+					  url: '/home',
+					  templateUrl: "app/home.html",
+					  controller: 'AppCtrl'
+				  });
+		},*/
+		
+		configurarRota: function(config){			
+			
+			//Indica o estado inicial como home
+			PlatformModule.$stateProvider
+			.state(config.name, {
+				url: config.url,
+				views: {
+					'main@' : {
+						templateUrl: config.templateUrl,
+						controller: config.controller + ''
+					}
+				}
+			})
 		}
 	};
+	
+	return platformService;
 });
