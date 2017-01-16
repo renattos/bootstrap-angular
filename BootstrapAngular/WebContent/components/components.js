@@ -11,7 +11,7 @@ angular.module('components', ['platform','ui.router'])
 	
     $rootScope.$on('$stateChangeStart', function(evt, to, params) {
 //    	console.log('state change start', to);
-    	PlatformService.sidebar.itens = [];
+  //  	PlatformService.sidebar.itens = [];
     	PlatformService.selectByState(to.name);
       if (to.redirectTo) {
         evt.preventDefault();
@@ -28,8 +28,12 @@ angular.module('components', ['platform','ui.router'])
 	  $stateProvider
 		    .state('home', {
 		      url: "/home",
-		      templateUrl: "app/home.html",
-		      controller: 'AppCtrl' 
+		      views: {
+			  		'main@' : {
+			  			templateUrl: "app/home.html",
+					    controller: 'AppCtrl'
+			  		}
+		  	  }
 		    })
 		    
 })
