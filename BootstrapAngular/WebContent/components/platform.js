@@ -18,6 +18,7 @@ PlatformModule.config(function($stateProvider, $urlRouterProvider){
 		      views: {
 			  		'main@' : {
 			  			templateUrl: "app/home.html",
+			  			controllerAs: '$ctrl',
 					    controller: 'AppCtrl'
 			  		}
 		  	  }
