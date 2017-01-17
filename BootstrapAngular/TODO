@@ -18,6 +18,7 @@ OK      - hour (textbased-template)
 OK      	- Escolher o dia
 OK        	- Bloquear digitar
         	- o model deve ser atribuido de acordo com o valor recebido: type="auto" ou (String, Date, Number(timestamp))
+        	- Melhorar o design do componente
         	- range válido (limite inferior e/ou superior)
     	- Combobox
     	- Checkbox
@@ -36,9 +37,9 @@ OK		- Corrigir layout do Sidenav em dispositivos pequenos
 		- Melhorar o design dos itens de menu
 OK  - Trazer a infra de "Plataforma" (angular material) para o projeto com bootstrap
     - Criar um componente para o NavBar em angular para tirar o bootstrapJS e JQuery do projeto
-    - Criar Layout para a tela inicial
-    - Implementar a navegação por rotas (menu superior e lateral)
-    - Corrigir o refresh dos menus do SideNav ao trocar de rota (só esvaziar o sidenav quando trocar de modulo)
-    	- Incluir definicao dos menus nos modulos
+OK  - Criar Layout para a tela inicial
+OK  - Implementar a navegação por rotas (menu superior e lateral)
+OK  - Corrigir o refresh dos menus do SideNav ao trocar de rota (só esvaziar o sidenav quando trocar de modulo)
+OK    	- Incluir definicao dos menus nos modulos
     - Ao clicar nos menus (mobile), ocultar o SideNav e o menu do NavBar
-    - Transferir a configuração das rotas para Platform
+OK  - Transferir a configuração das rotas para Platform

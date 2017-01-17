@@ -29,9 +29,11 @@ PlatformModule.config(function($stateProvider, $urlRouterProvider){
 	PlatformService.reset();
 	
     $rootScope.$on('$stateChangeStart', function(evt, to, params) {
-    	console.log('state change start', to);
-    	PlatformService.sidebar.itens = [];
-    	PlatformService.selectByState(to.name);
+    	
+    	var selectedModule = PlatformService.selectByState(to.name);
+    	console.log('selected module: ', selectedModule);
+    	
+    	
       if (to.redirectTo) {
         evt.preventDefault();
         $state.go(to.redirectTo, params)
@@ -41,6 +43,7 @@ PlatformModule.config(function($stateProvider, $urlRouterProvider){
 .factory('PlatformService', function(){
 	var platformService =  {
 		modules: {app: []},
+		currentModule: null,
 		sidebar: {
 			visible: true,
 			disabled: false,
@@ -49,31 +52,25 @@ PlatformModule.config(function($stateProvider, $urlRouterProvider){
 				this.visible = !this.visible;
 			}
 		},
-		
-		navbar: {
-			itens: []
-		},
-		
+
 		reset: function(){
 			this.sidebar.visible = true;
 			this.sidebar.itens = [];
-			this.navbar.itens = [];
+			
 			this.modules = {app: []}
 		},
 		
 		registerModule: function(module, group){
-
-			if(group){
-				if(this.modules[group])
-					this.modules[group].push(module);
-				else {
-					this.modules[group] = [];
-					this.modules[group].push(module);
-				}
+			
+			var groupId = ( module.parentState ? module.parentState : 'app');
+//			var groupId = (group ? group : 'app');
+			
+			if( ! this.modules[groupId] ) {
+				this.modules[groupId] = [];
 			}
-			else {
-				this.modules['app'].push(module);
-			} 
+			this.configurarRota(module);
+			this.modules[groupId].push(module);
+			 
 		},
 		
 		getModules: function(group){
@@ -85,14 +82,66 @@ PlatformModule.config(function($stateProvider, $urlRouterProvider){
 		
 		selectByState: function(currentState){
 			var appModules = this.modules['app'];
+			var current = this.currentModule;
+
+			//localiza o nav atual
 			angular.forEach(appModules, function(module){
 	    		module.active = false;
-	    		
-	    		if(currentState && currentState.indexOf(module.state) == 0){
+	    		if(currentState && currentState.indexOf(module.state) === 0){
 	    			module.active = true;
+	    			current = module;
 	    		}
 
 	    	});
+			
+			//localiza o sub-nav atual
+			var submoduleAux = this.currentSubModule;
+			if( current){
+				var subModules = this.modules[current.state];
+				angular.forEach(subModules, function(module){
+					module.active = false;
+					
+					if(currentState && currentState == module.state ){
+						module.active = true;
+						submoduleAux = module;
+					}
+					
+				});
+			}
+			
+			var ctx = {currentModule:current, subModule: submoduleAux};
+			this.configureSidebar(current, submoduleAux);
+			
+			return ctx;
+		},
+		
+		configureSidebar: function(module, subModule){
+			
+			if(module && ( !subModule || ( subModule.sidebarConfig && subModule.sidebarConfig.type == 'parent') ) ){
+				var sidebarConfig = module.sidebarConfig;
+				if(sidebarConfig){
+					if(sidebarConfig.type == 'custom'){
+						this.sidebar.itens = sidebarConfig.itens;
+						this.sidebar.visible = true;
+					}
+				} else {
+					this.sidebar.itens = [];
+					this.sidebar.visible = false;
+				}
+			}
+			
+			if(subModule){
+				var sidebarConfig = subModule.sidebarConfig;
+				if(sidebarConfig){
+					if(sidebarConfig.type == 'custom'){
+						this.sidebar.itens = sidebarConfig.itens;
+						this.sidebar.visible = true;
+					}
+				} else {
+					this.sidebar.itens = [];
+					this.sidebar.visible = false;
+				}
+			}
 		},
 		
 		selectModule: function(m){
@@ -107,33 +156,22 @@ PlatformModule.config(function($stateProvider, $urlRouterProvider){
 			
 			return true;
 		},
-		
-/*		configurarHome: function(){
-				
-				  $urlRouterProvider.otherwise("/home");
 
-				  //Indica o estado inicial como home
-				  this.configurarRota({
-					  name: 'home',
-					  url: '/home',
-					  templateUrl: "app/home.html",
-					  controller: 'AppCtrl'
-				  });
-		},*/
-		
 		configurarRota: function(config){			
 			
 			//Indica o estado inicial como home
 			PlatformModule.$stateProvider
-			.state(config.name, {
+			.state(config.state, {
 				url: config.url,
 				views: {
 					'main@' : {
 						templateUrl: config.templateUrl,
-						controller: config.controller + ''
+						controllerAs: '$ctrl',
+						controller: config.controller
 					}
 				}
 			})
+			
 		}
 	};
 	
