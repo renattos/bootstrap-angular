@@ -1,1 +1,20 @@
-Pagina inicial do módulo 1 - MENU 1
+<!-- Pagina inicial do módulo 1 - MENU 1 -->
+
+<form novalidate="novalidate">
+	<div class="row col-xs-12">
+		<textfield label="Nome" ng-model="nmUsu" tooltip="Nome do usuário" placeholder="Sobrenome do usuário"></textfield>
+		<date name="dtNasc" ng-model="dtNascimento" label="Data de nascimento" ></date>
+		<cpf name="cpf1" ng-model="cpfUsu" ng-required="true" ></cpf>
+	</div>
+	<div class="row col-xs-12">
+		<cep name="cep1" ng-model="cepUsu" ></cep>
+		<cnpj name="cnpj1" ng-model="cnpjTrabalho" label="CNPJ do trabalho" ng-required="true" ></cnpj>
+		<hour name="hour1" ng-model="hora" ng-required="false" ></hour>
+	</div>
+	<div class="row col-xs-12">
+		<telefone name="tel1" ng-model="telUsu" ></telefone>
+		<telefone name="tel4" label="Telefone Celular" ng-model="telUsu4" ddd="true" nono-digito="true" ></telefone>
+		<telefone name="tel2" label="Telefone9" ng-model="telUsu2" nono-digito="true" ></telefone>
+		<telefone name="tel3" label="TelefoneDDD" ng-model="telUsu3" ddd="true" ></telefone>
+	</div>
+</form>
