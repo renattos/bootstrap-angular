@@ -1,6 +1,6 @@
 <li class="sidenav-menu-item" ng-class="{'sidenav-menu-item-active': $ctrl.node.active}">
 	
-	<a ui-sref="{{$ctrl.node.state}}" class="sidenav-menu-item"  ng-if="!( $ctrl.node.children )" ng-class="{'sidenav-menu-item-active': $ctrl.node.active}" >{{$ctrl.node.name}}</a>
+	<a ui-sref="{{$ctrl.node.state}}" class="sidenav-menu-item" ng-click="$ctrl.select($ctrl.node)"  ng-if="!( $ctrl.node.children )" ng-class="{'sidenav-menu-item-active': $ctrl.node.active}" >{{$ctrl.node.name}}</a>
     <div class="sidenav-menu-item"  ng-if="$ctrl.node.children " ng-click="$ctrl.toggle()" ng-class="{'sidenav-menu-item-active': $ctrl.node.active}">
     	<span style="display: inline;" 
     	      class="pull-right glyphicon"

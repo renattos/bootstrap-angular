@@ -55,9 +55,22 @@ angular.module('components', ['platform'])
     bindings: {
         node: '='
     },
-    controller: function () {
+    controller: function (PlatformService) {
         var ctrl = this;
         ctrl.expanded = true;
+        
+        ctrl.select = function (n) {
+        	var subModules = PlatformService.sidebar.itens;
+        	
+			angular.forEach(subModules, function(module){
+				module.active = false;				
+			});
+			
+			if(n){
+				n.active = true;
+			}
+        	
+        }
         
         ctrl.toggle = function(){
         	console.log('toggle node');
@@ -515,6 +528,7 @@ angular.module('components', ['platform'])
 				
 				if(digitFormatted){
 					var valueDigit = digitFormatted.replace(new RegExp(/\D/, 'g'),''); // remove todos os caracteres não numéricos.
+					valueDigit = valueDigit.substring(0,8);
 					
 					ctrl.maxlength = 10;
 					var pattern = '(\\d{2})(\\d+)' ;
@@ -748,6 +762,7 @@ angular.module('components', ['platform'])
 				var digitFormatted = ctrl.modelCtrl.$viewValue;
 				if(digitFormatted){
 					var valueDigit = digitFormatted.replace(new RegExp(/\D/, 'g'),''); // remove todos os caracteres não numéricos.
+					valueDigit = valueDigit.substring(0, 4);
 					ctrl.maxlength = 5;
 
 					switch(valueDigit.length){
@@ -783,6 +798,7 @@ angular.module('components', ['platform'])
 						}
 						default:{
 							digitFormatted = valueDigit;
+//							digitFormatted = valueDigit.substring(0,ctrl.maxlength - 1);;
 							break;
 						}
 					}

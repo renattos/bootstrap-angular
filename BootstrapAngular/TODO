@@ -10,9 +10,9 @@ OK  	- Telefone (textbased-template)
 OK      - CPF (textbased-template)
 OK      - CNPJ (textbased-template)
 OK  	- CEP (textbased-template)
-			- Corrigir mascara: tá aceitando mais que o maxlength
+OK			- Corrigir mascara: tá aceitando mais que o maxlength
 OK      - hour (textbased-template)
-			- Corrigir mascara: tá aceitando mais que o maxlength
+OK			- Corrigir mascara: tá aceitando mais que o maxlength
         - date 
         	- Implementar a troca de mês e ano
 OK      	- Escolher o dia
