@@ -105,10 +105,18 @@ angular.module('components', ['platform'])
     return {
       
       restrict: 'E',
-      scope: { insert: '@' },
+      scope: { insert: '@', params: '<' },
       replace: true,
       link: function(scope, element, attrs, ctrl){
-    	  var template = angular.element('<' + scope.insert +'/>');
+    	  
+    	  var directiveName = scope.insert;
+
+    	  var directiveParams = '';
+          for (var i in scope.params) {
+        		  directiveParams += i + "=\"params['" + i + "']\" ";
+          }
+
+          var template = angular.element('<' + directiveName + ' ' + directiveParams +'/>');
 	      element.append(template);
 	      $compile(template)(scope);
 	  }
@@ -304,24 +312,29 @@ angular.module('components', ['platform'])
     return {
       
       restrict: 'E',
-      scope: { title: '@', field: '@' },
+      scope: { title: '@', field: '@', renderer:'@' },
       require: '^grid',
       link: {
     	  pre: function(scope, element, attrs, ctrl){
     		  ctrl.addColumn({
     			  title: scope.title,
-    			  field: scope.field
+    			  field: scope.field,
+    			  renderer: scope.renderer ? scope.renderer : 'default-cell-renderer'
     		  });
     	  }
       }
-      /*link: function(scope, element, attrs, ctrl){
-		  ctrl.addColumn({
-			  title: scope.title,
-			  field: scope.field
-		  });
-	  }*/
     };
   })
+  .component('defaultCellRenderer', {
+        bindings: {
+            model: '<',
+            field: '<'
+        },
+        template: '<span>{{$ctrl.model[$ctrl.field]}}</span>',
+        controller: function () {
+            var ctrl = this;
+        }
+})
   
 /***********************************************************************************************************/
   /*

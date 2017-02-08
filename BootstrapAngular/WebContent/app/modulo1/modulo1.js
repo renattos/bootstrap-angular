@@ -13,9 +13,13 @@ angular.module('modulo1', [
 		sidebarConfig: {
 			  type: 'custom',
 			  itens: [
-			          {name: 'Menu 1.1', state:'modulo1.menu1'},
 			          {name: 'Menu 1.2', state:'modulo1.menu2'},
-			          {name: 'Menu 1.3', state:'modulo1.menu3'}
+			          {name: 'Menu 1.1', state:'modulo1.menu1'},
+			          {name: 'Menu 1.3', state:'modulo1.menu3', children: [
+								{name: 'Menu 1.3.1', state:'modulo1.menu2'},
+								{name: 'Menu 1.3.2', state:'modulo1.menu1'}           
+			                     ]
+			          }
 			  ]
 		  }
 	});

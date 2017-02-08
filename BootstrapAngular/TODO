@@ -25,7 +25,8 @@ OK        	- Bloquear digitar
     	- RadioButtons
     	- SimNao (radio button)
         - period (date, hour, datetime)
-    	- Grids
+OK    	- Grids
+OK    		- Permitir customização de uma célula por meio de um componente.
 		- money
     	- Popups
     	- Tabs
