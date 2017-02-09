@@ -368,17 +368,18 @@ angular.module('components', ['platform'])
 		
 		ctrl.applyWidth = function(){
 			var classes = '';
+			
 			if(!ctrl.wSm){ ctrl.wSm = 12;} 
 			if(!ctrl.wMd){ ctrl.wMd = 8;} 
 			if(!ctrl.wLg){ ctrl.wLg = 6;}
 			if(!ctrl.wXl){ ctrl.wXl = 6;} 
+			
 			
 			classes += ' col-sm-' + ctrl.wSm;
 			classes += ' col-md-' + ctrl.wMd;
 			classes += ' col-lg-' + ctrl.wLg;
 			classes += ' col-xl-' + ctrl.wXl;
 			
-			console.log('classes textfield', classes);
 			return classes;
 		}
 	}
