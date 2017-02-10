@@ -17,7 +17,7 @@ angular.module('components', ['platform'])
 		
 		ctrl.select = function(item){
 			if(PlatformService.selectModule(item)){
-				$state.go(item.state)
+				$state.go(item.state);
 			}
 		}
 		
@@ -367,7 +367,6 @@ angular.module('components', ['platform'])
 		
 		ctrl.applyWidth = function(){
 			var classes = '';
-<<<<<<< HEAD
 			
 			if(!ctrl.wPhone){ ctrl.wPhone = 12;} 
 			if(!ctrl.wTablet){ ctrl.wTablet = 8;} 
@@ -376,19 +375,6 @@ angular.module('components', ['platform'])
 			classes += ' col-xs-' + ctrl.wPhone;
 			classes += ' col-sm-' + ctrl.wTablet;
 			classes += ' col-md-' + ctrl.wDesktop;
-=======
-			
-			if(!ctrl.wSm){ ctrl.wSm = 12;} 
-			if(!ctrl.wMd){ ctrl.wMd = 8;} 
-			if(!ctrl.wLg){ ctrl.wLg = 6;}
-			if(!ctrl.wXl){ ctrl.wXl = 6;} 
-			
-			
-			classes += ' col-sm-' + ctrl.wSm;
-			classes += ' col-md-' + ctrl.wMd;
-			classes += ' col-lg-' + ctrl.wLg;
-			classes += ' col-xl-' + ctrl.wXl;
->>>>>>> origin/master
 			
 			return classes;
 		}
