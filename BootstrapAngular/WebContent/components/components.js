@@ -347,10 +347,9 @@ angular.module('components', ['platform'])
 		name: '@',
 		tooltip:'@',
 		placeholder:'@',
-		wSm:'@',
-		wMd:'@',
-		wLg:'@',
-		wXl:'@',
+		wPhone:'@',
+		wTablet:'@',
+		wDesktop:'@',
 		model: '=ngModel',
 		required: '=ngRequired',
 		readonly: '=ngReadonly',
@@ -368,17 +367,15 @@ angular.module('components', ['platform'])
 		
 		ctrl.applyWidth = function(){
 			var classes = '';
-			if(!ctrl.wSm){ ctrl.wSm = 12;} 
-			if(!ctrl.wMd){ ctrl.wMd = 8;} 
-			if(!ctrl.wLg){ ctrl.wLg = 6;}
-			if(!ctrl.wXl){ ctrl.wXl = 6;} 
 			
-			classes += ' col-sm-' + ctrl.wSm;
-			classes += ' col-md-' + ctrl.wMd;
-			classes += ' col-lg-' + ctrl.wLg;
-			classes += ' col-xl-' + ctrl.wXl;
+			if(!ctrl.wPhone){ ctrl.wPhone = 12;} 
+			if(!ctrl.wTablet){ ctrl.wTablet = 8;} 
+			if(!ctrl.wDesktop){ ctrl.wDesktop = 6;}
 			
-			console.log('classes textfield', classes);
+			classes += ' col-xs-' + ctrl.wPhone;
+			classes += ' col-sm-' + ctrl.wTablet;
+			classes += ' col-md-' + ctrl.wDesktop;
+			
 			return classes;
 		}
 	}
@@ -856,6 +853,9 @@ angular.module('components', ['platform'])
 		name: '@',
 		tooltip:'<',
 		placeholder:'<',
+		wPhone:'@',
+		wTablet:'@',
+		wDesktop:'@',
 		model: '=ngModel',
 		min:'=ngMin',
 		max:'=ngMax',
@@ -919,8 +919,66 @@ angular.module('components', ['platform'])
 			ctrl.defineCurrent(selectedDate);
 		}
 		
+		ctrl.applyWidth = function(){
+			var classes = '';
+			
+			if(!ctrl.wPhone){ ctrl.wPhone = 12;} 
+			if(!ctrl.wTablet){ ctrl.wTablet = 4;} 
+			if(!ctrl.wDesktop){ ctrl.wDesktop = 3;}
+			
+			classes += ' col-xs-' + ctrl.wPhone;
+			classes += ' col-sm-' + ctrl.wTablet;
+			classes += ' col-md-' + ctrl.wDesktop;
+			
+			return classes;
+		}
+		
 		
 	}
 })
-
+.component('combobox',{
+	bindings: {
+		label: '@',
+		name: '@',
+		tooltip:'@',
+		options:'=',
+		optionId:'@',
+		optionDescription:'@',
+		
+		wPhone:'@',
+		wTablet:'@',
+		wDesktop:'@',
+		model: '=ngModel',
+		required: '=ngRequired',
+		readonly: '=ngReadonly',
+		disabled: '=ngDisabled',
+		onchange: '=ngChange'
+	},
+	templateUrl: 'components/tpl/form/combobox.tpl.html',
+	controller: function($attrs){
+		var ctrl = this;
+		
+		if(!ctrl.name){
+			var strNgModel = $attrs.ngModel;
+			ctrl.name = strNgModel;
+		}
+		
+		if(!ctrl.optionId){ ctrl.optionId = 'codigo';} 
+		if(!ctrl.optionDescription){ ctrl.optionDescription = 'descricao';} 
+		
+		ctrl.applyWidth = function(){
+			var classes = '';
+			
+			if(!ctrl.wPhone){ ctrl.wPhone = 12;} 
+			if(!ctrl.wTablet){ ctrl.wTablet = 8;} 
+			if(!ctrl.wDesktop){ ctrl.wDesktop = 6;}
+			
+			classes += ' col-xs-' + ctrl.wPhone;
+			classes += ' col-sm-' + ctrl.wTablet;
+			classes += ' col-md-' + ctrl.wDesktop;
+			
+			return classes;
+		}
+	}
+})
 

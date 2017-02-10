@@ -3,7 +3,7 @@
 OK  	- Caixa de texto
 			- criar propriedade case-sensitive="lower upper normal(default)"
 			- criar propriedade minlength
-			- criar propriedade para largura do campo
+OK			- criar propriedade para largura do campo
 			- criar propriedade para os eventHandlers (click, blur, etc)
 			
 OK  	- Telefone (textbased-template)
@@ -17,15 +17,19 @@ OK			- Corrigir mascara: tá aceitando mais que o maxlength
         	- Implementar a troca de mês e ano
 OK      	- Escolher o dia
 OK        	- Bloquear digitar
+OK			- criar propriedade para largura do campo
         	- o model deve ser atribuido de acordo com o valor recebido: type="auto" ou (String, Date, Number(timestamp))
         	- Melhorar o design do componente
         	- range válido (limite inferior e/ou superior)
-    	- Combobox
+OK    	- Combobox
+OK    		- Possibilitar indicar o campo ID e a Descrição das opções.
     	- Checkbox
     	- RadioButtons
     	- SimNao (radio button)
         - period (date, hour, datetime)
 OK    	- Grids
+			- Permitir seleção de multiplas linhas (checkbox do lado esquerdo)
+			- Paginação
 OK    		- Permitir customização de uma célula por meio de um componente.
 		- money
     	- Popups

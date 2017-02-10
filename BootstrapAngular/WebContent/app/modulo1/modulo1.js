@@ -68,8 +68,19 @@ angular.module('modulo1', [
 	var ctrl = this;
 })
 .controller('modulo1.Menu1Ctrl', function() {
-	console.log('entrou no menu 1');
+	
 	var ctrl = this;
+	ctrl.cursos = [
+	      {codigo:1,descricao:'Arquitetura'},
+	      {codigo:2,descricao:'Ciência da Computação'},
+	      {codigo:3,descricao:'Engenharia Civil'}
+	   ]
+	
+	ctrl.localidades = [
+			{id:1, cidade:'Distrito Federal'},
+			{id:2, cidade:'Rio de Janeiro'},
+			{id:3, cidade:'São Paulo'}
+	     ]
 })
 .controller('modulo1.Menu2Ctrl', function() {
 	console.log('entrou no menu 2');

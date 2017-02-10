@@ -1,16 +1,18 @@
-<div class="row col-xs-12 col-sm-2 col-md-2">
-	<textfield  label="{{$ctrl.label}}" 
-			    title="{{$ctrl.tooltip}}"
-	     		placeholder="{{$ctrl.placeholder}}"
+<textfield  label="{{$ctrl.label}}" 
+		    title="{{$ctrl.tooltip}}"
+     		placeholder="{{$ctrl.placeholder}}"
 	     		
-	     		maxlength="{{$ctrl.maxlength}}"
-	     		
-	     		ng-change="$ctrl.onModelInputChange()"
-	     		ng-model="$ctrl.modelToInput" 
-	     		ng-required="$ctrl.required" 
-	     		ng-disabled="$ctrl.disabled" 
-	     		ng-readonly="$ctrl.readonly"
-			   
-			   >
-	</textfield>
-</div>
+     		w-phone="12"
+     		w-tablet="2"
+     		w-desktop="2"
+     		
+     		maxlength="{{$ctrl.maxlength}}"
+     		
+     		ng-change="$ctrl.onModelInputChange()"
+     		ng-model="$ctrl.modelToInput" 
+     		ng-required="$ctrl.required" 
+     		ng-disabled="$ctrl.disabled" 
+     		ng-readonly="$ctrl.readonly"
+		   
+		   >
+</textfield>

@@ -1,0 +1,23 @@
+<div class="form-group" ng-class="$ctrl.applyWidth()" >
+	<label class="control-label" ng-if="$ctrl.label" for="{{$ctrl.name}}">
+   		{{$ctrl.label}}
+   		<span ng-if="$ctrl.required" style="color: red;">*</span>
+   </label>
+   
+	<select class="form-control" 
+	        id="{{$ctrl.name}}"
+     		title="{{$ctrl.tooltip}}"
+	        
+	        ng-options="bean as bean[$ctrl.optionDescription] for bean in $ctrl.options track by bean[$ctrl.optionId]" 
+	        
+	        ng-change="$ctrl.onchange()"
+     		ng-model="$ctrl.model" 
+     		ng-required="$ctrl.required" 
+     		ng-disabled="$ctrl.disabled" 
+     		ng-readonly="$ctrl.readonly"
+	        >
+	</select>
+		
+	</div>
+</div>
+<!-- ng-options="bean as bean.descricao for bean in $ctrl.options track by bean.codigo" -->
