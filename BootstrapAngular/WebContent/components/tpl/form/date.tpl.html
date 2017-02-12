@@ -5,7 +5,7 @@
    </label>
    
    <div class="input-group dropdown">
-	    <input type="text" class="form-control" ng-model="$ctrl.currentDate" ng-readonly="true" style="background-color: white;">
+	    <input type="date" class="form-control input-sm" ng-model="$ctrl.currentDate" ng-readonly="true" style="background-color: white;">
 	    <div class="input-group-addon dropdown-toggle" data-toggle="dropdown">
 	        <span class="glyphicon glyphicon-th"></span>
 	    </div>
@@ -18,97 +18,7 @@
 	  		<tr ng-repeat="s in $ctrl.weeks" >
 	  			<td ng-repeat="d in s" class="calendarDay"><div ng-click="$ctrl.selectDate(d)" ng-class="{badge: $ctrl.currentDate.getTime() == d.getTime()}">{{d.getDate()}}</div></td>
 	  		</tr>
-	  		<!-- <tr>
-	  			<td>01</td><td>02</td><td>03</td><td><span class="badge">04</span></td><td>05</td><td>06</td><td>07</td>
-	  		</tr>
-	  		<tr>
-	  			<td>08</td><td>09</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
-	  		</tr>
-	  		<tr>
-	  			<td>08</td><td>09</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
-	  		</tr>
-	  		<tr>
-	  			<td>08</td><td>09</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
-	  		</tr>
-	  		<tr>
-	  			<td>08</td><td>09</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
-	  		</tr> -->
 	  	</table>
 	  </div>
 	</div>
-  <!--  <div class="input-group">
-      <input type="text" class="form-control" readonly aria-label="...">
-      <span class="input-group-addon">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    Action <span class="caret"></span>
-	  </button>
-	  <div class="dropdown-menu">
-	  	<table>
-	  		<tr>
-	  			<th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-	  		</tr>
-	  		<tr>
-	  			<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
-	  		</tr>
-	  		<tr>
-	  			<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
-	  		</tr>
-	  	</table>
-	  </div>
-      </span>
-    </div> -->
-   
-   <!-- <div class="btn-group">
-	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    Action <span class="caret"></span>
-	  </button>
-	  <div class="dropdown-menu">
-	  	<table>
-	  		<tr>
-	  			<th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
-	  		</tr>
-	  		<tr>
-	  			<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
-	  		</tr>
-	  		<tr>
-	  			<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
-	  		</tr>
-	  	</table>
-	  </div> -->
-	  <!-- <ul class="dropdown-menu">
-	    <li><a href="#">Action</a></li>
-	    <li><a href="#">Another action</a></li>
-	    <li><a href="#">Something else here</a></li>
-	    <li role="separator" class="divider"></li>
-	    <li><a href="#">Separated link</a></li>
-	  </ul> -->
-   
-  
-   
-	<!-- 
-	<input type="text" class="form-control" 
-     		id="{{$ctrl.name}}"
-     		title="{{$ctrl.tooltip}}"
-     		placeholder="{{$ctrl.placeholder}}"
-     		
-     		ng-change="$ctrl.onModelInputChange()"
-     		
-     		ng-model="$ctrl.modelToInput" 
-     		ng-required="$ctrl.required" 
-     		ng-disabled="$ctrl.disabled" 
-     		ng-readonly="$ctrl.readonly"
-     > -->
-	
-   <!-- <input type="date" class="form-control" 
-     		id="{{$ctrl.name}}"
-     		title="{{$ctrl.tooltip}}"
-     		placeholder="{{$ctrl.placeholder}}"
-     		
-     		ng-min="$ctrl.min"
-       		ng-max="$ctrl.max"
-     		ng-model="$ctrl.modelToInput  | date:'dd/MM/yyyy'" 
-     		ng-required="$ctrl.required" 
-     		ng-disabled="$ctrl.disabled" 
-     		ng-readonly="$ctrl.readonly"
-     > -->
  </div> 

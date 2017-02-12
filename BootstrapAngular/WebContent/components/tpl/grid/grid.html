@@ -1,52 +1,39 @@
 <div class="table-responsive">
-  <!-- <table class="table table-condensed table-striped table-bordered table-hover no-margin">
-    <thead>
-      <tr>
-        <th style="width:5%">
-          
-        </th>
-        <th style="width:85%">Escola</th>
-        <th style="width:10%" class="hidden-phone">Situacao</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="m in models">
-        <td>
-		  <a href="" title="Editar" ng-click="prepareEdit(m.codigo)"> <span class="glyphicon glyphicon-edit" /></a>
-		  <a href="" title="Excluir" ng-click="excluir(m.codigo)"> <span class="glyphicon glyphicon-remove-sign" /></a>
-        </td>
-        <td>
-          <span class="name">({{ m.codigo }}) - {{m.nome}}</span>
-        </td>
-        <td class="hidden-phone">{{m.isAtivo ? 'Ativo' : 'Inativo'}}</td>
-       
-      </tr>
-      <tr ng-show="models.length == 0">
-        
-        <td colspan='3'> 
-          <span class="name">N√£o h√° registros cadastrados.</span>
-        </td>
-        </tr>
-    </tbody>
-  </table> -->
-  <table class="table table-condensed table-striped table-bordered table-hover no-margin">
-	<thead>
-		<tr>
-		   <th ng-repeat="c in columns">{{c.title}}</th>
-		 </tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="data in datasource">
-			<td ng-repeat="c in columns">{{data[c.field]}}</td>
-		</tr>
-		
-		<tr ng-show="datasource.length == 0">
-        
-        <td colspan="{{columns.length}}"> 
-          <span class="name">N„o existem registros a serem exibidos.</span>
-        </td>
-        </tr>
-	</tbody>
-</table>
+  <table class="table table-condensed table-striped table-bordered table-hover grid-pagination">
+		<thead>
+			<tr>
+			   <th ng-if="selectable == true  && model.data && model.data != 0">
+						<input type="checkbox" ng-model="model.all" ng-click="selectAll()" title="Selecionar todos os itens da p·gina"/>
+				</th>
+			   <th ng-repeat="c in columns">{{c.title}}</th>
+			 </tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="data in model.data">
+				<th ng-if="selectable == true">
+					<input type="checkbox" ng-checked="data._selected" ng-click="select(data)"/>
+				</th>
+				<td ng-repeat="c in columns">{{data[c.field]}}</td>
+			</tr>
+			
+			<tr ng-show="!model.data || model.data == 0">
+		        <td colspan="{{columns.length + (selectable ? 1 : 0)}}"> 
+		          <span class="name">N&atilde;o existem registros a serem exibidos.</span>
+		        </td>
+	        </tr>
+		    <tr ng-show="model.data.length > 0">
+		        <td colspan="{{columns.length + (selectable ? 1 : 0)}}"> 
+			        	<div class="input-group col-sm-3 pull-left">
+					      <div class="input-group-addon  input-sm notextselect" style="cursor: default;" ng-click="previousPage()">&lt;&lt;</div>
+					      <div class="input-group-addon  input-sm notextselect">P&aacute;gina </div>
+					      <input type="tel" ng-readonly="true" ng-model="model.page" ng-change="updateGrid(model);" class="form-control input-sm table-grid-pagination-field  notextselect" >
+					      <div class="input-group-addon input-sm notextselect">de {{model.total / model.offset}}</div>
+					      <div class="input-group-addon input-sm notextselect" style="cursor: default;" ng-click="nextPage()">&gt;&gt;</div>
+					    </div>
+					    <div class="pull-right form-control-static">Quantidade de registros: {{model.total}}</div>
+		        </td>
+	        </tr>
+		</tbody>
+	</table>
 </div>
 

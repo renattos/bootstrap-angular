@@ -78,7 +78,10 @@ body, .container-fluid {
 .sidebar-closed {
 	display: none;
 }
-
+.grid-pagination{
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
 .sidenav {
     height: 100%; /* 100% Full-height */
     position: fixed; /* Stay in place */
@@ -121,6 +124,21 @@ body, .container-fluid {
 	background-color: blue;
 	color: white;
 }
+
+.table-grid-pagination-field {
+	text-align: center;vertical-align: middle;
+}
+
+.notextselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
 
 .sidenav-menu-item-active a {
 	color: white;

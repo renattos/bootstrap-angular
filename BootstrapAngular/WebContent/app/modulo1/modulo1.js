@@ -70,6 +70,29 @@ angular.module('modulo1', [
 .controller('modulo1.Menu1Ctrl', function() {
 	
 	var ctrl = this;
+	
+	ctrl.usuarios = [
+	                 {cpf:11111111111,nome:'Fulano', sobrenome:'de Tal'},
+	                 {cpf:22222222222,nome:'Beutrano', sobrenome:'Moraes'},
+	                 {cpf:33333333333,nome:'Ciclano', sobrenome: 'de Araújo'}
+	           ]
+	ctrl.gridusuario = {
+			data: ctrl.usuarios,
+			total: 100,
+			offset: 10,
+			page: 3
+	}; 
+	ctrl.usuario = {}
+	
+	ctrl.create = function(usu){
+		ctrl.usuarios.push(usu);
+		ctrl.usuario = {}
+	}
+	
+	ctrl.load = function(model){
+		console.log('CARREGAR GRID',model);
+	}
+	
 	ctrl.cursos = [
 	      {codigo:1,descricao:'Arquitetura'},
 	      {codigo:2,descricao:'Ciência da Computação'},

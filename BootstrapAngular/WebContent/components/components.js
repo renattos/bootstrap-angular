@@ -44,10 +44,6 @@ angular.module('components', ['platform'])
     },
     controller: function () {
         var ctrl = this;
-        console.log('this', this);
-        console.log('title', this.title);
-        console.log('elementos', this.itens);
-
     }
 })
 .component('node', {
@@ -73,7 +69,6 @@ angular.module('components', ['platform'])
         }
         
         ctrl.toggle = function(){
-        	console.log('toggle node');
         	ctrl.expanded = !ctrl.expanded;
         }
     }
@@ -289,11 +284,74 @@ angular.module('components', ['platform'])
       
       restrict: 'E',
       scope: { 
-    	  datasource: '='
+    	  model:'=ngModel',
+    	  selectable: '=',
+    	  onPageChange: '='
       },
       controller: function ($scope) {
     	 
     	  $scope.columns = [];
+    	  $scope.select = function(item){
+    		  var itens = $scope.model.itens;
+    		  if(!itens){
+    			  itens = $scope.model.itens = [];
+    		  }
+    		  
+    		  var index = itens.indexOf(item);
+    		  
+    		  if(index >=0){
+    			  itens.splice(index, 1);
+    		  } else {
+    			  itens.push(item);
+    		  }
+    		  
+    	  }
+    	  
+    	  $scope.selectAll = function(){
+    		  $scope.model.itens = []
+    		  angular.forEach($scope.model.data, function (d) {
+    			  d._selected = $scope.model.all;
+    		  });
+    		  if($scope.model.all){
+    			  angular.copy($scope.model.data, $scope.model.itens);
+    		  }
+    		  
+    	  }
+    	  
+    	  $scope.previousPage = function(){
+    		  var page = Number($scope.model.page);
+    		  
+    		  if(page > 1 ){
+    			  page -= 1;
+    		  } else {
+    			  page = 1;  
+    		  }
+    		  
+    		  $scope.model.page = page;
+    		  $scope.updateGrid($scope.model);
+    	  }
+    	  
+    	  $scope.nextPage = function(){
+    		  var page = Number($scope.model.page);
+    		  var totalPages = $scope.model.total / $scope.model.offset;
+    		  
+    		  if(page < totalPages ){
+    			  page += 1;
+    		  } else {
+    			  page = totalPages;  
+    		  }
+    		  
+    		  $scope.model.page = page;
+    		  $scope.updateGrid($scope.model);
+    	  }
+    	  
+    	  $scope.updateGrid = function(model){
+    		  model.page = Number(model.page);
+    		  if($scope.onPageChange){
+    			  $scope.onPageChange(model);  
+    		  }
+    		  
+    	  }
     	  
     	  this.addColumn = function(col){
     		  $scope.columns.push(col);
@@ -508,6 +566,8 @@ angular.module('components', ['platform'])
 					 * */
 					ctrl.modelCtrl.$setViewValue(ctrl.modelToInput);
 					 
+				} else {
+					ctrl.modelToInput   = digitFormatted;
 				}
 	        };
 			
@@ -582,6 +642,8 @@ angular.module('components', ['platform'])
 					  * */
 					 ctrl.modelCtrl.$setViewValue(ctrl.modelToInput);
 					 
+				}else {
+					ctrl.modelToInput   = digitFormatted;
 				}
 	        };
 		};
@@ -628,7 +690,6 @@ angular.module('components', ['platform'])
 			
 			ctrl.modelCtrl.$render = function() {
 				var digitFormatted = ctrl.modelCtrl.$viewValue;
-				
 				if(digitFormatted){
 					var valueDigit = digitFormatted.replace(new RegExp(/\D/, 'g'),''); // remove todos os caracteres não numéricos.
 					
@@ -661,6 +722,8 @@ angular.module('components', ['platform'])
 					 * */
 					ctrl.modelCtrl.$setViewValue(ctrl.modelToInput);
 					
+				} else {
+					ctrl.modelToInput   = digitFormatted;
 				}
 			};
 		};
@@ -744,6 +807,8 @@ angular.module('components', ['platform'])
 					 * */
 					ctrl.modelCtrl.$setViewValue(ctrl.modelToInput);
 					
+				} else {
+					ctrl.modelToInput   = digitFormatted;
 				}
 			};
 		};
@@ -842,6 +907,8 @@ angular.module('components', ['platform'])
 					 * */
 					ctrl.modelCtrl.$setViewValue(ctrl.modelToInput);
 					
+				} else {
+					ctrl.modelToInput   = digitFormatted;
 				}
 			};
 		};
@@ -901,7 +968,6 @@ angular.module('components', ['platform'])
 		}
 		
 		ctrl.selectDate = function(selectedDate){
-			console.log(selectedDate);
 			
 			var startDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), '01');
 			startDate.setDate(startDate.getDate() - startDate.getDay());

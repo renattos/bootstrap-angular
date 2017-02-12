@@ -2,15 +2,16 @@
 
 <form novalidate="novalidate">
 	<div class="row col-xs-12"> 
-		<textfield label="Nome" ng-model="nmUsu" tooltip="Nome do usuário" placeholder="Nome do usuário" w-desktop="2"></textfield>
-		<textfield label="Sobrenome" ng-model="snUsu" tooltip="Sobrenome do usuário" placeholder="Sobrenome do usuário"></textfield>
-		<date name="dtNasc" ng-model="dtNascimento" label="Data de nascimento" ></date> 
+		<cpf name="cpf1" ng-model="$ctrl.usuario.cpf" ng-required="true" ></cpf>
+		<textfield name="txtUsu" label="Nome" ng-model="$ctrl.usuario.nome" tooltip="Nome do usu&aacute;rio" placeholder="Nome do usu&aacute;rio" w-desktop="4"></textfield>
+		<textfield name="txtSbNomeUsu" label="Sobrenome" ng-model="$ctrl.usuario.sobrenome" tooltip="Sobrenome do usu&aacute;rio" placeholder="Sobrenome do usu&aacute;rio"></textfield>
 	</div>
 	
 	<div class="row col-xs-12"> 
 		<cpf name="cpf1" ng-model="cpfUsu" ng-required="true" ></cpf>
-		<combobox name="cbxCursos" label="Curso" ng-required="true" ng-model="$ctrl.curso" options="$ctrl.cursos"></combobox>
-		<combobox name="cbxLocalidade" label="Localidade" ng-required="true" ng-model="$ctrl.local" options="$ctrl.localidades" option-id="id" option-description="cidade"></combobox>
+		<date name="dtNasc" ng-model="dtNascimento" label="Data de nascimento"></date>
+		<combobox name="cbxCursos" label="Curso" ng-required="true" ng-model="$ctrl.curso" options="$ctrl.cursos" w-desktop="3"></combobox>
+		<combobox name="cbxLocalidade" label="Localidade" ng-required="true" ng-model="$ctrl.local" options="$ctrl.localidades" option-id="id" option-description="cidade"  w-desktop="3"></combobox>
 	</div>
 
 	<div class="row col-xs-12">
@@ -25,5 +26,13 @@
 		<telefone name="tel2" label="Telefone9" ng-model="telUsu2" nono-digito="true" ></telefone>
 		<telefone name="tel3" label="TelefoneDDD" ng-model="telUsu3" ddd="true" ></telefone>
 	</div>
+	
+	<button type="button" class="btn btn-primary input-sm" ng-click="$ctrl.create($ctrl.usuario)">SALVAR</button>
+	
+	<grid ng-model="$ctrl.gridusuario" selectable="true" on-page-change="$ctrl.load">
+		<column title="CPF" field="cpf"/>
+		<column title="Nome" field="nome"/>
+		<column title="Sobrenome" field="sobrenome"/>
+	</grid>
 	
 </form>

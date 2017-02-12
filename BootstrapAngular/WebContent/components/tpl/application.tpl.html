@@ -4,9 +4,9 @@
     <div class="col-md-2 col-xs-8 col-sm-8 sidenav sidebar-left" ng-class="{'sidebar-closed': !$ctrl.sidebar.visible || $ctrl.sidebar.itens.length == 0}">
     	<sidebar itens="$ctrl.sidebar.itens"></sidebar>
     </div>
-    
+
     <div
-    ng-class="{'col-md-offset-2 col-xs-offset-8 col-sm-offset-8 col-md-10': $ctrl.sidebar.visible && $ctrl.sidebar.itens.length > 0, 
+   	 ng-class="{'col-md-offset-2 col-xs-offset-8 col-sm-offset-8 col-md-10': $ctrl.sidebar.visible && $ctrl.sidebar.itens.length > 0, 
                'col-md-12':                                                !$ctrl.sidebar.visible || $ctrl.sidebar.itens.length == 0 }">
 	    	<div style="width: 100%;" ui-view="main"></div>
     </div>  
