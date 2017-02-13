@@ -13,7 +13,9 @@
 				<th ng-if="selectable == true">
 					<input type="checkbox" ng-checked="data._selected" ng-click="select(data)"/>
 				</th>
-				<td ng-repeat="c in columns">{{data[c.field]}}</td>
+				<td ng-repeat="c in columns">
+					<directive insert="{{c.renderer}}" params="{'model': data, 'field': c.field}"/>
+				</td>
 			</tr>
 			
 			<tr ng-show="!model.data || model.data == 0">
