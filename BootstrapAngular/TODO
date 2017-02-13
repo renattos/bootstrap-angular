@@ -4,15 +4,20 @@ OK  	- Caixa de texto
 			- criar propriedade case-sensitive="lower upper normal(default)"
 			- criar propriedade minlength
 OK			- criar propriedade para largura do campo
-			- criar propriedade para os eventHandlers (click, blur, etc)
+			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
 			
 OK  	- Telefone (textbased-template)
+			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
 OK      - CPF (textbased-template)
+			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
 OK      - CNPJ (textbased-template)
+			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
 OK  	- CEP (textbased-template)
 OK			- Corrigir mascara: tá aceitando mais que o maxlength
+			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
 OK      - hour (textbased-template)
 OK			- Corrigir mascara: tá aceitando mais que o maxlength
+			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
         - date 
         	- Implementar a troca de mês e ano
 OK      	- Escolher o dia
@@ -23,14 +28,19 @@ CLD        	- o model deve ser atribuido de acordo com o valor recebido: type="a
         	- range válido (limite inferior e/ou superior)
 OK    	- Combobox
 OK    		- Possibilitar indicar o campo ID e a Descrição das opções.
+			- Quando o campo não for obrigatório, incluir uma opção em branco para seleção.
+			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
     	- Checkbox
     		- Possibilitar indicar o campo ID e a Descrição das opções.
+    		- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
     	- RadioButtons
     		- Possibilitar indicar o campo ID e a Descrição das opções.
+			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)    		
     	- SimNao (radio button)
-        - period (date, hour, datetime)
+        - period (date)
 OK    	- Grids
 OK			- Permitir seleção de multiplas linhas (checkbox do lado esquerdo)
+			- BUG: O check "Selecionar todos" não é desmarcado/marcado quando os itens são selecionados/desmarcados um a um.
 OK			- Paginação
 			- Ordenação por colunas
 			- Criar coluna das actions
