@@ -7,9 +7,12 @@
 				<th ng-repeat="w in $ctrl.weekDays">{{w}}</th>
 			</tr>
 			<tr ng-repeat="s in $ctrl.weeks">
-				<td ng-repeat="d in s" class="calendarDay"><div
+				<td ng-repeat="d in s" class="calendarDay"
 						ng-click="$ctrl.selectDate(d)"
-						ng-class="{badge: $ctrl.currentDate.getTime() == d.getTime()}">{{d.getDate()}}</div></td>
+						ng-class="{info: $ctrl.currentDate.getTime() == d.getTime()}">{{d.getDate()}}</td>
+<!-- 				<td ng-repeat="d in s" class="calendarDay"><div
+						ng-click="$ctrl.selectDate(d)"
+						ng-class="{badge: $ctrl.currentDate.getTime() == d.getTime()}">{{d.getDate()}}</div></td> -->
 			</tr>
 		</table>
 	</div>

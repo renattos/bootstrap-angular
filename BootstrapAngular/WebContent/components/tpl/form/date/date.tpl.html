@@ -14,17 +14,29 @@
 	<div class="windowModal" ng-if="$ctrl.opencalendar">
 		<div class="calendarcontainer col-xs-12 col-md-4 col-md-offset-4">
 			<div class="calendar">
-				<label>&nbsp; {{$ctrl.currentMonth.name}} de {{$ctrl.currentYear}}</label>
-				<table class="table">
-					<tr>
-						<th ng-repeat="w in $ctrl.weekDays">{{w}}</th>
-					</tr>
-					<tr ng-repeat="s in $ctrl.weeks">
-						<td ng-repeat="d in s" class="calendarDay"><div
-								ng-click="$ctrl.selectDate(d)"
-								ng-class="{badge: $ctrl.currentDate.getTime() == d.getTime()}">{{d.getDate()}}</div></td>
-					</tr>
-				</table>
+				<div style="width: 50%" class="pull-left">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					<label>{{$ctrl.currentMonth.name}}</label>
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</div>
+				<div style="width: 50%; text-align: right;" class="pull-right">
+					<span class="glyphicon glyphicon-chevron-down"></span>
+					<label>{{$ctrl.currentYear}}</label>
+					<span class="glyphicon glyphicon-chevron-up"></span>
+				</div>
+					<table class="table table-condensed table-responsive">
+						<tr>
+							<th ng-repeat="w in $ctrl.weekDays">{{::w}}</th>
+						</tr>
+						<tr ng-repeat="s in $ctrl.weeks">
+						<td ng-repeat="d in s" class="calendarDay"
+							ng-click="$ctrl.selectDate(d)"
+							ng-class="{info: $ctrl.currentDate.getTime() == d.getTime()}">{{::d.getDate()}}</td>
+							<!-- <td ng-repeat="d in s" class="calendarDay"><div
+									ng-click="$ctrl.selectDate(d)"
+									ng-class="{badge: $ctrl.currentDate.getTime() == d.getTime()}">{{d.getDate()}}</div></td> -->
+						</tr>
+					</table>
 				<button class="btn btn-info" ng-click="$ctrl.opencalendar = false">OK</button>
 			</div>
 		</div>
