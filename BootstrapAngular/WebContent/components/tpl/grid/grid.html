@@ -14,7 +14,7 @@
 					<input type="checkbox" ng-checked="data._selected" ng-click="select(data)"/>
 				</th>
 				<td ng-repeat="c in columns">
-					<directive insert="{{c.renderer}}" params="{'model': data, 'field': c.field}"/>
+					<directive insert="{{::c.renderer}}" params="{'model': data, 'field': c.field}"/>
 				</td>
 			</tr>
 			
@@ -32,7 +32,7 @@
 					      <div class="input-group-addon input-sm notextselect">de {{model.total / model.offset}}</div>
 					      <div class="input-group-addon input-sm notextselect" style="cursor: default;" ng-click="nextPage()">&gt;&gt;</div>
 					    </div>
-					    <div class="pull-right form-control-static">Quantidade de registros: {{model.total}}</div>
+					    <div class="pull-right form-control-static">Quantidade de registros: {{::model.total}}</div>
 		        </td>
 	        </tr>
 		</tbody>

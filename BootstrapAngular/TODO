@@ -1,4 +1,5 @@
 OK	- Criar Layout de Formulário
+    - Reduzir o número de watchers da página.
     - Criar componentes:
 OK  	- Caixa de texto
 			- criar propriedade case-sensitive="lower upper normal(default)"
@@ -19,13 +20,13 @@ OK      - hour (textbased-template)
 OK			- Corrigir mascara: tá aceitando mais que o maxlength
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
         - date 
-        	- Implementar a troca de mês e ano
-OK      	- Escolher o dia
-OK        	- Bloquear digitar
 OK			- criar propriedade para largura do campo
-CLD        	- o model deve ser atribuido de acordo com o valor recebido: type="auto" ou (String, Date, Number(timestamp))
-        	- Melhorar o design do componente (implementar na forma de popup igual ao materializecss.com?)
-        	- range válido (limite inferior e/ou superior)
+OK        	- implementar na forma de popup igual ao materializecss.com
+        	- Melhorar o design do componente
+OK        	- Escolher o dia
+OK        	- Implementar a troca de mês e ano
+OK        	- Bloquear digitar
+OK        	- range válido (limite inferior e/ou superior)
 OK    	- Combobox
 OK    		- Possibilitar indicar o campo ID e a Descrição das opções.
 			- Quando o campo não for obrigatório, incluir uma opção em branco para seleção.

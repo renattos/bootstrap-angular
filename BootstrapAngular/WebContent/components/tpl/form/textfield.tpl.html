@@ -1,20 +1,20 @@
- <div class="form-group" ng-class="$ctrl.applyWidth()" >
-   <label class="control-label" ng-if="$ctrl.label" for="{{$ctrl.name}}">
-   		{{$ctrl.label}}
+ <div class="form-group"  ng-class="$ctrl.applyWidth()"> 
+   <label class="control-label" ng-if="$ctrl.label" for="{{::$ctrl.name}}">
+   		{{::$ctrl.label}}
    		<span ng-if="$ctrl.required" style="color: red;">*</span>
    </label>
 	
    <input type="tel" class="form-control input-sm" 
-     		id="{{$ctrl.name}}"
-     		title="{{$ctrl.tooltip}}"
-     		placeholder="{{$ctrl.placeholder}}"
+     		id="{{::$ctrl.name}}"
+     		title="{{::$ctrl.tooltip}}"
+     		placeholder="{{::$ctrl.placeholder}}"
      		
-     		maxlength="{{$ctrl.maxlength}}"
+      		maxlength="{{::$ctrl.maxlength}}"
      		
      		ng-change="$ctrl.onchange()"
      		ng-model="$ctrl.model" 
      		ng-required="$ctrl.required" 
      		ng-disabled="$ctrl.disabled" 
-     		ng-readonly="$ctrl.readonly"
+     		ng-readonly="$ctrl.readonly" 
      >
  </div>

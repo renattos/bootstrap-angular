@@ -8,7 +8,7 @@
 	</div>
 	
 	<div class="row col-xs-12"> 
-		<date name="dtNasc" ng-model="$ctrl.usuario.dtNascimento" label="Data de nascimento"></date>
+	   <date name="dtNasc" ng-model="$ctrl.usuario.dtNascimento" ng-min="$ctrl.dataminima" ng-max="$ctrl.datamaxima" label="Data de nascimento"></date>
 		<combobox name="cbxCursos" label="Curso" ng-required="true" ng-model="$ctrl.usuario.curso" options="$ctrl.cursos" w-desktop="3"></combobox>
 		<combobox name="cbxLocalidade" label="Localidade" ng-required="true" ng-model="$ctrl.usuario.local" options="$ctrl.localidades" option-id="id" option-description="cidade"  w-desktop="3"></combobox>
 	</div>

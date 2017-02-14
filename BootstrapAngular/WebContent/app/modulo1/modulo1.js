@@ -84,6 +84,9 @@ angular.module('modulo1', [
 	}; 
 	ctrl.usuario = {}
 	
+	ctrl.dataminima = new Date(2017, 1, 14);
+	ctrl.datamaxima = new Date(2017, 1, 18);
+	
 	ctrl.create = function(usu){
 		ctrl.usuarios.push(usu);
 		ctrl.usuario = {}

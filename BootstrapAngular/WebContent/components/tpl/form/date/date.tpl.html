@@ -1,44 +1,45 @@
  <div class="form-group" ng-class="$ctrl.applyWidth()">
-   <label ng-if="$ctrl.label" for="{{$ctrl.name}}">
-   		{{$ctrl.label}}
+   <label ng-if="$ctrl.label" for="{{::$ctrl.name}}">
+   		{{::$ctrl.label}}
    		<span ng-if="$ctrl.required" style="color: red;">*</span>
    </label>
    
-   <div class="input-group dropdown">
-	    <input type="date" class="form-control input-sm" ng-readonly="true" style="background-color: white;">
+   <div class="input-group">
+	    <input type="text" ng-model="$ctrl.textDate" class="form-control input-sm" ng-readonly="true" style="background-color: white;">
 	    <div class="input-group-addon" ng-click="$ctrl.opencalendar = true">
 	        <span class="glyphicon glyphicon-calendar"></span>
 	    </div>
 
 	</div>
 	<div class="windowModal" ng-if="$ctrl.opencalendar">
-		<div class="calendarcontainer col-xs-12 col-md-4 col-md-offset-4">
+		<!-- <div class="calendarcontainer col-xs-offset-1 col-sm-offset-5 col-md-offset-4"> -->   <!-- col-xs-12 col-md-4 col-md-offset-4" -->
+		<div class="calendarcontainer col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">   <!-- col-xs-12 col-md-4 col-md-offset-4" -->
 			<div class="calendar">
+				 
 				<div style="width: 50%" class="pull-left">
-					<span class="glyphicon glyphicon-chevron-left"></span>
-					<label>{{$ctrl.currentMonth.name}}</label>
-					<span class="glyphicon glyphicon-chevron-right"></span>
+					<span class="glyphicon glyphicon-chevron-left" ng-click="$ctrl.previousMonth()"></span>
+					<label>{{$ctrl.visibleMonth.name}}</label>
+					<span class="glyphicon glyphicon-chevron-right" ng-click="$ctrl.nextMonth()"></span>
 				</div>
 				<div style="width: 50%; text-align: right;" class="pull-right">
-					<span class="glyphicon glyphicon-chevron-down"></span>
-					<label>{{$ctrl.currentYear}}</label>
-					<span class="glyphicon glyphicon-chevron-up"></span>
+					<span class="glyphicon glyphicon-chevron-down"  ng-click="$ctrl.previousYear()"></span>
+					<label>{{$ctrl.visibleYear}}</label>
+					<span class="glyphicon glyphicon-chevron-up" ng-click="$ctrl.nextYear()"></span>
 				</div>
-					<table class="table table-condensed table-responsive">
+				
+				 <table class="table table-responsive">
 						<tr>
-							<th ng-repeat="w in $ctrl.weekDays">{{::w}}</th>
+							<th>D</th><th>S</th><th>T</th><th>Q</th><th>Q</th><th>S</th><th>S</th>
 						</tr>
 						<tr ng-repeat="s in $ctrl.weeks">
-						<td ng-repeat="d in s" class="calendarDay"
+						<td ng-repeat="d in s" 
 							ng-click="$ctrl.selectDate(d)"
-							ng-class="{info: $ctrl.currentDate.getTime() == d.getTime()}">{{::d.getDate()}}</td>
-							<!-- <td ng-repeat="d in s" class="calendarDay"><div
-									ng-click="$ctrl.selectDate(d)"
-									ng-class="{badge: $ctrl.currentDate.getTime() == d.getTime()}">{{d.getDate()}}</div></td> -->
+							ng-class="{info: $ctrl.currentDate.getTime() == d.getTime(), invalidDate: (d < $ctrl.min || d > $ctrl.max ), calendarDay: !(d < $ctrl.min || d > $ctrl.max )}">{{d.getDate()}}</td>
+							
 						</tr>
-					</table>
+				</table> 
 				<button class="btn btn-info" ng-click="$ctrl.opencalendar = false">OK</button>
-			</div>
+			 </div> 
 		</div>
 	</div>
  </div> 

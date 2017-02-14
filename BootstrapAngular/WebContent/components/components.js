@@ -1035,24 +1035,127 @@ angular.module('components', ['platform'])
 		         {name: 'Julho'  , value: 6},{name: 'Agosto'    , value:  7},{name: 'Setembro' , value:  8},
 		         {name: 'Outubro', value: 9},{name: 'Novembro'  , value: 10},{name: 'Dezembro' , value: 11},
 		     ];
-		
-		ctrl.weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+	
 		ctrl.weeks = [];
 		
 		ctrl.$onInit = function(){
-			ctrl.selectDate( new Date());
+			ctrl.selectDate( );
 		}
 		
-		
-		ctrl.defineCurrent = function(date){
+		ctrl.defineVisible = function(dt){
+			
+			var date = dt;
+			
+			if(!date){
+				date = new Date();
+			}
+			
+			ctrl.visibleDate = date;			
+			ctrl.visibleMonth = ctrl.months[date.getMonth()];
+			ctrl.visibleYear = date.getFullYear();
+		}
+
+		ctrl.defineCurrent = function(dt, markCurrentDate){
+			
+			var date = dt;
+			
+			if(!date){
+				date = new Date();
+			}
+			
+			
+			ctrl.defineVisible(date);
+			
 			ctrl.currentWeekDay = date.getDay();
 			ctrl.currentMonth = ctrl.months[date.getMonth()];
 			ctrl.currentYear = date.getFullYear();
-			ctrl.currentDate = new Date(ctrl.currentYear, ctrl.currentMonth.value, date.getDate());
+			
+			if(dt){
+				ctrl.currentDate = new Date(ctrl.currentYear, ctrl.currentMonth.value, date.getDate());
+				ctrl.textDate = date.getDate() + '/' + ( ctrl.currentMonth.value >= 9 ? ctrl.currentMonth.value+1 : '0' + (ctrl.currentMonth.value+1)) + '/' + ctrl.currentYear;
+			}
+			
 		}
 		
-		ctrl.selectDate = function(selectedDate){
+		ctrl.previousMonth = function() {
+			var selectedDate = ctrl.visibleDate;
 			
+			if(!selectedDate){
+				selectedDate = new Date();
+			}
+			
+			var dateAux = new Date(selectedDate.getFullYear(), selectedDate.getMonth() - 1, '01')
+			
+			ctrl.printWeeks(dateAux);
+			
+			ctrl.defineVisible(dateAux);
+			
+		}
+		
+		ctrl.nextMonth = function() {
+			var selectedDate = ctrl.visibleDate;
+			
+			if(!selectedDate){
+				selectedDate = new Date();
+			}
+			
+			var dateAux = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, '01')
+			
+			ctrl.printWeeks(dateAux);
+			
+			ctrl.defineVisible(dateAux);
+			
+		}
+		
+		ctrl.previousYear = function() {
+			var selectedDate = ctrl.visibleDate;
+			
+			if(!selectedDate){
+				selectedDate = new Date();
+			}
+			
+			var dateAux = new Date(selectedDate.getFullYear() - 1, selectedDate.getMonth(), '01')
+			
+			ctrl.printWeeks(dateAux);
+			
+			ctrl.defineVisible(dateAux);
+			
+		}
+		
+		ctrl.nextYear = function() {
+			var selectedDate = ctrl.visibleDate;
+			
+			if(!selectedDate){
+				selectedDate = new Date();
+			}
+			
+			var dateAux = new Date(selectedDate.getFullYear() + 1, selectedDate.getMonth(), '01')
+			
+			ctrl.printWeeks(dateAux);
+			
+			ctrl.defineVisible(dateAux);
+			
+		}
+		
+		ctrl.selectDate = function(dt){
+
+			if(dt < ctrl.min || dt > ctrl.max ){
+				return;
+			}
+			
+			
+			var selectedDate = dt;
+			
+			if(!selectedDate){
+				selectedDate = new Date();
+			}
+			
+			ctrl.printWeeks(selectedDate);
+			
+			ctrl.defineCurrent(dt);
+		}
+		
+		ctrl.printWeeks = function(selectedDate){
 			var startDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), '01');
 			startDate.setDate(startDate.getDate() - startDate.getDay());
 			
@@ -1066,7 +1169,6 @@ angular.module('components', ['platform'])
 				}
 				ctrl.weeks.push(semana);
 			}
-			ctrl.defineCurrent(selectedDate);
 		}
 		
 		ctrl.applyWidth = function(){
