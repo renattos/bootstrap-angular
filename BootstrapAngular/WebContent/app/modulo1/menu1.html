@@ -8,23 +8,22 @@
 	</div>
 	
 	<div class="row col-xs-12"> 
-		<cpf name="cpf1" ng-model="cpfUsu" ng-required="true" ></cpf>
-		<date name="dtNasc" ng-model="dtNascimento" label="Data de nascimento"></date>
-		<combobox name="cbxCursos" label="Curso" ng-required="true" ng-model="$ctrl.curso" options="$ctrl.cursos" w-desktop="3"></combobox>
-		<combobox name="cbxLocalidade" label="Localidade" ng-required="true" ng-model="$ctrl.local" options="$ctrl.localidades" option-id="id" option-description="cidade"  w-desktop="3"></combobox>
+		<date name="dtNasc" ng-model="$ctrl.usuario.dtNascimento" label="Data de nascimento"></date>
+		<combobox name="cbxCursos" label="Curso" ng-required="true" ng-model="$ctrl.usuario.curso" options="$ctrl.cursos" w-desktop="3"></combobox>
+		<combobox name="cbxLocalidade" label="Localidade" ng-required="true" ng-model="$ctrl.usuario.local" options="$ctrl.localidades" option-id="id" option-description="cidade"  w-desktop="3"></combobox>
 	</div>
 
 	<div class="row col-xs-12">
-		<cep name="cep1" ng-model="cepUsu" ></cep>
-		<cnpj name="cnpj1" ng-model="cnpjTrabalho" label="CNPJ do trabalho" ng-required="true" ></cnpj>
-		<hour name="hour1" ng-model="hora" ng-required="false" ></hour>
+		<cep name="cep1" ng-model="$ctrl.usuario.cepUsu" ></cep>
+		<cnpj name="cnpj1" ng-model="$ctrl.usuario.cnpjTrabalho" label="CNPJ do trabalho" ng-required="true" ></cnpj>
+		<hour name="hour1" ng-model="$ctrl.usuario.hora" ng-required="false" ></hour>
 	</div>
 	
 	<div class="row col-xs-12">
-		<telefone name="tel1" ng-model="telUsu" ></telefone>
-		<telefone name="tel4" label="Telefone Celular" ng-model="telUsu4" ddd="true" nono-digito="true" ></telefone>
-		<telefone name="tel2" label="Telefone9" ng-model="telUsu2" nono-digito="true" ></telefone>
-		<telefone name="tel3" label="TelefoneDDD" ng-model="telUsu3" ddd="true" ></telefone>
+		<telefone name="tel1" ng-model="$ctrl.usuario.telUsu" ></telefone>
+		<telefone name="tel4" label="Telefone Celular" ng-model="$ctrl.usuario.telUsu4" ddd="true" nono-digito="true" ></telefone>
+		<telefone name="tel2" label="Telefone9" ng-model="$ctrl.usuario.telUsu2" nono-digito="true" ></telefone>
+		<telefone name="tel3" label="TelefoneDDD" ng-model="$ctrl.usuario.telUsu3" ddd="true" ></telefone>
 	</div>
 	
 	<button type="button" class="btn btn-primary input-sm" ng-click="$ctrl.create($ctrl.usuario)">SALVAR</button>

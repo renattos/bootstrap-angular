@@ -1,0 +1,16 @@
+<div class="windowModal">
+	<div class="calendar col-xs-12 col-sm-4 col-sm-offset-4" style="background-color: green;">
+
+		<label>&nbsp; {{$ctrl.currentMonth.name}} de {{$ctrl.currentYear}}</label>
+		<table class="table">
+			<tr>
+				<th ng-repeat="w in $ctrl.weekDays">{{w}}</th>
+			</tr>
+			<tr ng-repeat="s in $ctrl.weeks">
+				<td ng-repeat="d in s" class="calendarDay"><div
+						ng-click="$ctrl.selectDate(d)"
+						ng-class="{badge: $ctrl.currentDate.getTime() == d.getTime()}">{{d.getDate()}}</div></td>
+			</tr>
+		</table>
+	</div>
+</div>

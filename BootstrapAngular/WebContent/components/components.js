@@ -203,7 +203,7 @@ angular.module('components', ['platform'])
         }
 })
 
-.service('popupService', function () {
+.service('PopupService', function () {
     var service = this;
 
     service.popups = [];
@@ -254,14 +254,14 @@ angular.module('components', ['platform'])
 
 .component('popupContainer', {
     templateUrl: 'components/tpl/popup/popup-container.html',
-    controller: function (popupService) {
+    controller: function (PopupService) {
         var ctrl = this;
 
-        ctrl.popups = popupService.popups;
+        ctrl.popups = PopupService.popups;
         ctrl.fechar = fechar;
 
         function fechar(popup) {
-            popupService.retirar(popup);
+            PopupService.retirar(popup);
         }
     }
 })
@@ -914,6 +914,90 @@ angular.module('components', ['platform'])
 		};
 	}
 })
+.component('datecalendar',{
+	bindings: {
+		label: '@',
+		name: '@',
+		wPhone:'@',
+		wTablet:'@',
+		wDesktop:'@',
+		min:'=ngMin',
+		max:'=ngMax',
+		required: '=ngRequired',
+		disabled: '=ngDisabled'
+	},
+	templateUrl: 'components/tpl/form/date/date.popup.tpl.html',
+	controller: function(){
+		
+	}
+})
+/*.component('date',{
+	bindings: {
+		label: '@',
+		name: '@',
+		tooltip:'<',
+		placeholder:'<',
+		wPhone:'@',
+		wTablet:'@',
+		wDesktop:'@',
+		model: '=ngModel',
+		min:'=ngMin',
+		max:'=ngMax',
+		required: '=ngRequired',
+		disabled: '=ngDisabled'
+	},
+	require: {
+		modelCtrl: '^ngModel'
+	},
+	templateUrl: 'components/tpl/form/date/date.tpl.html',
+	controller: function($attrs, PopupService){
+		var ctrl = this;
+		
+		if(!ctrl.name){
+			var strNgModel = $attrs.ngModel;
+			ctrl.name = strNgModel;
+		}
+		
+		if(!ctrl.label){
+			ctrl.label = 'Data';
+		}
+		
+		ctrl.months = [
+		         {name: 'Janeiro', value: 0},{name: 'Fevereiro' , value:  1},{name: 'Março'    , value:  2},
+		         {name: 'Abril'  , value: 3},{name: 'Maio'      , value:  4},{name: 'Junho'    , value:  5},
+		         {name: 'Julho'  , value: 6},{name: 'Agosto'    , value:  7},{name: 'Setembro' , value:  8},
+		         {name: 'Outubro', value: 9},{name: 'Novembro'  , value: 10},{name: 'Dezembro' , value: 11},
+		     ];
+		
+		ctrl.weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+		ctrl.weeks = [];
+		
+		
+		ctrl.applyWidth = function(){
+			var classes = '';
+			
+			if(!ctrl.wPhone){ ctrl.wPhone = 12;} 
+			if(!ctrl.wTablet){ ctrl.wTablet = 4;} 
+			if(!ctrl.wDesktop){ ctrl.wDesktop = 3;}
+			
+			classes += ' col-xs-' + ctrl.wPhone;
+			classes += ' col-sm-' + ctrl.wTablet;
+			classes += ' col-md-' + ctrl.wDesktop;
+			console.log('apply width')
+			return classes;
+		}
+		ctrl.$onInit = function(){
+			var titulo = "Mensagem333";
+	        
+
+	        var popup = PopupService.adicionar(null, 'datecalendar', {}, [{label: 'OK', onClick: close}]);
+
+	        function close() {
+	        	PopupService.retirar(popup);
+	        }
+		}
+	}
+})*/
 .component('date',{
 	bindings: {
 		label: '@',
@@ -932,7 +1016,7 @@ angular.module('components', ['platform'])
 	require: {
 		modelCtrl: '^ngModel'
 	},
-	templateUrl: 'components/tpl/form/date.tpl.html',
+	templateUrl: 'components/tpl/form/date/date.tpl.html',
 	controller: function($attrs){
 		var ctrl = this;
 		

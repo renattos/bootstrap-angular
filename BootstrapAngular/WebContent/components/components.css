@@ -63,6 +63,9 @@
 	text-align: center;
 }
 
+form {
+	margin-top: 15px;
+}
 /****************************************************************/
 body, .container-fluid {
 	height: 100%;
@@ -161,3 +164,17 @@ body, .container-fluid {
     display: block;
     transition: 0.3s
 } 
+
+/******************************************/
+/* CALENDAR */
+.calendarcontainer {
+	height: 100%; 
+}
+.calendar {
+	padding: 20px;
+	background-color: #CCC;
+	top: 50%; 
+	margin-top: -50%; 
+	position: relative;
+}
+	

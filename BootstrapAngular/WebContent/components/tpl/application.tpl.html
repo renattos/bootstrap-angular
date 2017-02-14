@@ -1,6 +1,6 @@
 <div class="container-fluid col-xs-12">
 	<navbar itens="$ctrl.appModules" brand="{{$ctrl.brand}}"/>
-	    
+	<popup-container></popup-container>	    
     <div class="col-md-2 col-xs-8 col-sm-8 sidenav sidebar-left" ng-class="{'sidebar-closed': !$ctrl.sidebar.visible || $ctrl.sidebar.itens.length == 0}">
     	<sidebar itens="$ctrl.sidebar.itens"></sidebar>
     </div>
