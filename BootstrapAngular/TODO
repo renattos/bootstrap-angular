@@ -6,19 +6,25 @@ OK  	- Caixa de texto
 			- criar propriedade minlength
 OK			- criar propriedade para largura do campo
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
+			- Incluir as validations e suas mensagens
 			
 OK  	- Telefone (textbased-template)
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
+			- Incluir as validations e suas mensagens
 OK      - CPF (textbased-template)
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
+			- Incluir as validations e suas mensagens
 OK      - CNPJ (textbased-template)
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
+			- Incluir as validations e suas mensagens
 OK  	- CEP (textbased-template)
 OK			- Corrigir mascara: tá aceitando mais que o maxlength
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
+			- Incluir as validations e suas mensagens
 OK      - hour (textbased-template)
 OK			- Corrigir mascara: tá aceitando mais que o maxlength
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
+			- Incluir as validations e suas mensagens
         - date 
 OK			- criar propriedade para largura do campo
 OK        	- implementar na forma de popup igual ao materializecss.com
@@ -27,25 +33,29 @@ OK        	- Escolher o dia
 OK        	- Implementar a troca de mês e ano
 OK        	- Bloquear digitar
 OK        	- range válido (limite inferior e/ou superior)
+			- Incluir as validations e suas mensagens
 OK    	- Combobox
 OK    		- Possibilitar indicar o campo ID e a Descrição das opções.
 			- Quando o campo não for obrigatório, incluir uma opção em branco para seleção.
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
+			- Incluir as validations e suas mensagens
     	- Checkbox
     		- Possibilitar indicar o campo ID e a Descrição das opções.
     		- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
+    		- Incluir as validations e suas mensagens
     	- RadioButtons
     		- Possibilitar indicar o campo ID e a Descrição das opções.
-			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)    		
-    	- SimNao (radio button)
+			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc) 
+			- Incluir as validations e suas mensagens   		
         - period (date)
 OK    	- Grids
 OK			- Permitir seleção de multiplas linhas (checkbox do lado esquerdo)
-			- BUG: O check "Selecionar todos" não é desmarcado/marcado quando os itens são selecionados/desmarcados um a um.
+OK			- BUG: O check "Selecionar todos" não é desmarcado/marcado quando os itens são selecionados/desmarcados um a um.
 OK			- Paginação
 			- Ordenação por colunas
 			- Criar coluna das actions
 OK    		- Permitir customização de uma célula por meio de um componente.
+    	- SimNao (radio button)
 		- money
     	- Popups
     	- Tabs

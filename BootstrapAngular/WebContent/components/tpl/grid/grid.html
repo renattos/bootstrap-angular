@@ -11,7 +11,7 @@
 		<tbody>
 			<tr ng-repeat="data in model.data">
 				<th ng-if="selectable == true">
-					<input type="checkbox" ng-checked="data._selected" ng-click="select(data)"/>
+					<input type="checkbox" ng-model="data._selected" ng-click="select(data)"/>
 				</th>
 				<td ng-repeat="c in columns">
 					<directive insert="{{::c.renderer}}" params="{'model': data, 'field': c.field}"/>

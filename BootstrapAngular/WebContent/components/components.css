@@ -129,6 +129,7 @@ body, .container-fluid {
 }
 
 .notextselect {
+  cursor: default;
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -168,12 +169,6 @@ body, .container-fluid {
 	white-space: nowrap;
 }
 
-.invalidDate {
-	/* text-decoration: line-through; */
-	color: gray;
-	font-weight: lighter;
-}
-
 .calendar {
 	padding: 10px;
 	background-color: #CCC;
@@ -182,6 +177,11 @@ body, .container-fluid {
 	margin-top: -50%; 
 	position: relative; 
 	
+}
+
+.invalidDate {
+	color: gray;
+	font-weight: lighter;
 }
 
 .calendarDay {

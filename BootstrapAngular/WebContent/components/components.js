@@ -301,20 +301,32 @@ angular.module('components', ['platform'])
     		  
     		  if(index >=0){
     			  itens.splice(index, 1);
+    			  $scope.model.all = false;
     		  } else {
     			  itens.push(item);
+    			  
+    			  if(itens.length == $scope.model.data.length){
+    				  $scope.model.all = true;
+    			  }
+    			  
     		  }
     		  
     	  }
     	  
     	  $scope.selectAll = function(){
-    		  $scope.model.itens = []
+    		  if(! $scope.model.itens ){
+    			  $scope.model.itens = [];
+    		  } else {
+    			  $scope.model.itens.splice(0, $scope.model.itens.length);  
+    		  }
+    		  
     		  angular.forEach($scope.model.data, function (d) {
     			  d._selected = $scope.model.all;
+    			  
+    			  if($scope.model.all){
+        			  $scope.model.itens.push(d);
+        		  }
     		  });
-    		  if($scope.model.all){
-    			  angular.copy($scope.model.data, $scope.model.itens);
-    		  }
     		  
     	  }
     	  

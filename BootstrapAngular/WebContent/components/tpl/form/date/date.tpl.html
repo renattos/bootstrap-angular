@@ -28,10 +28,10 @@
 				</div>
 				
 				 <table class="table table-responsive">
-						<tr>
+						<tr style="color: red;" class="notextselect">
 							<th>D</th><th>S</th><th>T</th><th>Q</th><th>Q</th><th>S</th><th>S</th>
 						</tr>
-						<tr ng-repeat="s in $ctrl.weeks">
+						<tr ng-repeat="s in $ctrl.weeks" class="notextselect">
 						<td ng-repeat="d in s" 
 							ng-click="$ctrl.selectDate(d)"
 							ng-class="{info: $ctrl.currentDate.getTime() == d.getTime(), invalidDate: (d < $ctrl.min || d > $ctrl.max ), calendarDay: !(d < $ctrl.min || d > $ctrl.max )}">{{d.getDate()}}</td>
