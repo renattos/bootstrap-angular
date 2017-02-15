@@ -4,7 +4,7 @@
 	<div class="row col-xs-12"> 
 		<cpf name="cpf1" ng-model="$ctrl.usuario.cpf" ng-required="true" ></cpf>
 		<textfield name="txtUsu" label="Nome" ng-model="$ctrl.usuario.nome" tooltip="Nome do usu&aacute;rio" placeholder="Nome do usu&aacute;rio" w-desktop="4"></textfield>
-		<textfield name="txtSbNomeUsu" label="Sobrenome" ng-model="$ctrl.usuario.sobrenome" tooltip="Sobrenome do usu&aacute;rio" placeholder="Sobrenome do usu&aacute;rio"></textfield>
+		<textfield name="txtSbNomeUsu" ng-maxlength="6" ng-minlength="3" label="Sobrenome" ng-model="$ctrl.usuario.sobrenome" tooltip="Sobrenome do usu&aacute;rio" placeholder="Sobrenome do usu&aacute;rio"></textfield>
 	</div>
 	
 	<div class="row col-xs-12"> 

@@ -1,4 +1,4 @@
- <div class="form-group"  ng-class="$ctrl.applyWidth()"> 
+ <div class="form-group {{$ctrl.applyWidth()}}" ng-class="{ 'has-error': $ctrl.viewForm[$ctrl.name].$touched && $ctrl.viewForm[$ctrl.name].$invalid}"> 
    <label class="control-label" ng-if="$ctrl.label" for="{{::$ctrl.name}}">
    		{{::$ctrl.label}}
    		<span ng-if="$ctrl.required" style="color: red;">*</span>
@@ -6,15 +6,22 @@
 	
    <input type="tel" class="form-control input-sm" 
      		id="{{::$ctrl.name}}"
+     		name="{{::$ctrl.name}}"
      		title="{{::$ctrl.tooltip}}"
      		placeholder="{{::$ctrl.placeholder}}"
      		
       		maxlength="{{::$ctrl.maxlength}}"
      		
+     		ng-minlength="$ctrl.minlength"
      		ng-change="$ctrl.onchange()"
      		ng-model="$ctrl.model" 
      		ng-required="$ctrl.required" 
      		ng-disabled="$ctrl.disabled" 
      		ng-readonly="$ctrl.readonly" 
      >
+     <div class="help-block" ng-messages="$ctrl.viewForm[$ctrl.name].$error" ng-if="$ctrl.viewForm[$ctrl.name].$touched && $ctrl.viewForm[$ctrl.name].$invalid">
+        <p ng-message="minlength">Este campo deve ter no m&iacute;nimo {{::$ctrl.minlength}} caractere(s).</p>
+        <p ng-message="maxlength">Este campo deve ter no m&aacute;ximo {{::$ctrl.maxlength}} caractere(s).</p>
+        <p ng-message="required">Este campo &eacute; de preenchimento obrigat&oacute;rio.</p>
+    </div>
  </div>

@@ -1,4 +1,4 @@
-angular.module('components', ['platform'])
+angular.module('components', ['ngMessages','platform'])
 
 /****************************************************************************************************************************************************/ 
 /*
@@ -420,11 +420,16 @@ angular.module('components', ['platform'])
 		wPhone:'@',
 		wTablet:'@',
 		wDesktop:'@',
+		minlength: '=ngMinlength',
+		maxlength: '=ngMaxlength',
 		model: '=ngModel',
 		required: '=ngRequired',
 		readonly: '=ngReadonly',
 		disabled: '=ngDisabled',
 		onchange: '=ngChange'
+	},
+	require: {
+		viewForm: '^form'
 	},
 	templateUrl: 'components/tpl/form/textfield.tpl.html',
 	controller: function($attrs){
@@ -672,7 +677,8 @@ angular.module('components', ['platform'])
 		disabled: '=ngDisabled'
 	},
 	require: {
-		modelCtrl: '^ngModel'
+		modelCtrl: '^ngModel',
+		viewForm: '^form'
 	},
 	templateUrl: 'components/tpl/form/cpf.tpl.html',
 	controller: function($attrs){
