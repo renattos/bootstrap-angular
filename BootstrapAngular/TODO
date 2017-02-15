@@ -3,28 +3,28 @@ OK	- Criar Layout de Formulário
     - Criar componentes:
 OK  	- Caixa de texto
 			- criar propriedade case-sensitive="lower upper normal(default)"
-			- criar propriedade minlength
+OK			- criar propriedade minlength
 OK			- criar propriedade para largura do campo
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
-			- Incluir as validations e suas mensagens
+OK			- Incluir as validations e suas mensagens
 			
 OK  	- Telefone (textbased-template)
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
-			- Incluir as validations e suas mensagens
+OK			- Incluir as validations e suas mensagens
 OK      - CPF (textbased-template)
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
-			- Incluir as validations e suas mensagens
+OK			- Incluir as validations e suas mensagens
 OK      - CNPJ (textbased-template)
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
-			- Incluir as validations e suas mensagens
+OK			- Incluir as validations e suas mensagens
 OK  	- CEP (textbased-template)
 OK			- Corrigir mascara: tá aceitando mais que o maxlength
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
-			- Incluir as validations e suas mensagens
+OK			- Incluir as validations e suas mensagens
 OK      - hour (textbased-template)
 OK			- Corrigir mascara: tá aceitando mais que o maxlength
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
-			- Incluir as validations e suas mensagens
+OK			- Incluir as validations e suas mensagens
         - date 
 OK			- criar propriedade para largura do campo
 OK        	- implementar na forma de popup igual ao materializecss.com
@@ -33,12 +33,14 @@ OK        	- Escolher o dia
 OK        	- Implementar a troca de mês e ano
 OK        	- Bloquear digitar
 OK        	- range válido (limite inferior e/ou superior)
-			- Incluir as validations e suas mensagens
+			- Incluir um botão para atribuir valor nulo
+OK			- Clique em datas já selecionadas deverá fechar a popup
+OK			- Incluir as validations e suas mensagens
 OK    	- Combobox
 OK    		- Possibilitar indicar o campo ID e a Descrição das opções.
 			- Quando o campo não for obrigatório, incluir uma opção em branco para seleção.
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)
-			- Incluir as validations e suas mensagens
+OK			- Incluir as validations e suas mensagens
     	- Checkbox
     		- Possibilitar indicar o campo ID e a Descrição das opções.
     		- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc)

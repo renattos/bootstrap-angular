@@ -12,7 +12,7 @@
      		
       		maxlength="{{::$ctrl.maxlength}}"
      		
-     		ng-minlength="$ctrl.minlength"
+     		ng-minlength="::$ctrl.minlength"
      		ng-change="$ctrl.onchange()"
      		ng-model="$ctrl.model" 
      		ng-required="$ctrl.required" 
@@ -20,8 +20,6 @@
      		ng-readonly="$ctrl.readonly" 
      >
      <div class="help-block" ng-messages="$ctrl.viewForm[$ctrl.name].$error" ng-if="$ctrl.viewForm[$ctrl.name].$touched && $ctrl.viewForm[$ctrl.name].$invalid">
-        <p ng-message="minlength">Este campo deve ter no m&iacute;nimo {{::$ctrl.minlength}} caractere(s).</p>
-        <p ng-message="maxlength">Este campo deve ter no m&aacute;ximo {{::$ctrl.maxlength}} caractere(s).</p>
-        <p ng-message="required">Este campo &eacute; de preenchimento obrigat&oacute;rio.</p>
+    		<div ng-messages-include="components/tpl/form/message-validations.tpl.html"></div>
     </div>
  </div>

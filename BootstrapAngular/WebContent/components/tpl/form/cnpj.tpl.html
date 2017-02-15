@@ -1,12 +1,13 @@
-<textfield  label="{{$ctrl.label}}" 
-		    title="{{$ctrl.tooltip}}"
-     		placeholder="{{$ctrl.placeholder}}"
+<textfield  label="{{::$ctrl.label}}" 
+		    title="{{::$ctrl.tooltip}}"
+     		placeholder="{{::$ctrl.placeholder}}"
+     		name="{{::$ctrl.name}}"
 	     		
      		w-phone="12"
      		w-tablet="4"
      		w-desktop="3"
      		
-     		maxlength="{{$ctrl.maxlength}}"
+     		maxlength="{{::$ctrl.maxlength}}"
      		
      		ng-change="$ctrl.onModelInputChange()"
      		ng-model="$ctrl.modelToInput" 

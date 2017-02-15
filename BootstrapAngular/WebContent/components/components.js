@@ -677,8 +677,7 @@ angular.module('components', ['ngMessages','platform'])
 		disabled: '=ngDisabled'
 	},
 	require: {
-		modelCtrl: '^ngModel',
-		viewForm: '^form'
+		modelCtrl: '^ngModel'
 	},
 	templateUrl: 'components/tpl/form/cpf.tpl.html',
 	controller: function($attrs){
@@ -932,90 +931,7 @@ angular.module('components', ['ngMessages','platform'])
 		};
 	}
 })
-.component('datecalendar',{
-	bindings: {
-		label: '@',
-		name: '@',
-		wPhone:'@',
-		wTablet:'@',
-		wDesktop:'@',
-		min:'=ngMin',
-		max:'=ngMax',
-		required: '=ngRequired',
-		disabled: '=ngDisabled'
-	},
-	templateUrl: 'components/tpl/form/date/date.popup.tpl.html',
-	controller: function(){
-		
-	}
-})
-/*.component('date',{
-	bindings: {
-		label: '@',
-		name: '@',
-		tooltip:'<',
-		placeholder:'<',
-		wPhone:'@',
-		wTablet:'@',
-		wDesktop:'@',
-		model: '=ngModel',
-		min:'=ngMin',
-		max:'=ngMax',
-		required: '=ngRequired',
-		disabled: '=ngDisabled'
-	},
-	require: {
-		modelCtrl: '^ngModel'
-	},
-	templateUrl: 'components/tpl/form/date/date.tpl.html',
-	controller: function($attrs, PopupService){
-		var ctrl = this;
-		
-		if(!ctrl.name){
-			var strNgModel = $attrs.ngModel;
-			ctrl.name = strNgModel;
-		}
-		
-		if(!ctrl.label){
-			ctrl.label = 'Data';
-		}
-		
-		ctrl.months = [
-		         {name: 'Janeiro', value: 0},{name: 'Fevereiro' , value:  1},{name: 'Março'    , value:  2},
-		         {name: 'Abril'  , value: 3},{name: 'Maio'      , value:  4},{name: 'Junho'    , value:  5},
-		         {name: 'Julho'  , value: 6},{name: 'Agosto'    , value:  7},{name: 'Setembro' , value:  8},
-		         {name: 'Outubro', value: 9},{name: 'Novembro'  , value: 10},{name: 'Dezembro' , value: 11},
-		     ];
-		
-		ctrl.weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-		ctrl.weeks = [];
-		
-		
-		ctrl.applyWidth = function(){
-			var classes = '';
-			
-			if(!ctrl.wPhone){ ctrl.wPhone = 12;} 
-			if(!ctrl.wTablet){ ctrl.wTablet = 4;} 
-			if(!ctrl.wDesktop){ ctrl.wDesktop = 3;}
-			
-			classes += ' col-xs-' + ctrl.wPhone;
-			classes += ' col-sm-' + ctrl.wTablet;
-			classes += ' col-md-' + ctrl.wDesktop;
-			console.log('apply width')
-			return classes;
-		}
-		ctrl.$onInit = function(){
-			var titulo = "Mensagem333";
-	        
 
-	        var popup = PopupService.adicionar(null, 'datecalendar', {}, [{label: 'OK', onClick: close}]);
-
-	        function close() {
-	        	PopupService.retirar(popup);
-	        }
-		}
-	}
-})*/
 .component('date',{
 	bindings: {
 		label: '@',
@@ -1032,7 +948,8 @@ angular.module('components', ['ngMessages','platform'])
 		disabled: '=ngDisabled'
 	},
 	require: {
-		modelCtrl: '^ngModel'
+		modelCtrl: '^ngModel',
+		viewForm: '^form'
 	},
 	templateUrl: 'components/tpl/form/date/date.tpl.html',
 	controller: function($attrs){
@@ -1156,7 +1073,7 @@ angular.module('components', ['ngMessages','platform'])
 		}
 		
 		ctrl.selectDate = function(dt){
-
+			console.log('select date');
 			if(dt < ctrl.min || dt > ctrl.max ){
 				return;
 			}
@@ -1169,6 +1086,10 @@ angular.module('components', ['ngMessages','platform'])
 			}
 			
 			ctrl.printWeeks(selectedDate);
+			
+			if(dt - ctrl.currentDate == 0){
+				ctrl.opencalendar = false;
+			}
 			
 			ctrl.defineCurrent(dt);
 		}
@@ -1223,6 +1144,9 @@ angular.module('components', ['ngMessages','platform'])
 		readonly: '=ngReadonly',
 		disabled: '=ngDisabled',
 		onchange: '=ngChange'
+	},
+	require: {
+		viewForm: '^form'
 	},
 	templateUrl: 'components/tpl/form/combobox.tpl.html',
 	controller: function($attrs){

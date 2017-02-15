@@ -3,25 +3,25 @@
 <form novalidate="novalidate">
 	<div class="row col-xs-12"> 
 		<cpf name="cpf1" ng-model="$ctrl.usuario.cpf" ng-required="true" ></cpf>
-		<textfield name="txtUsu" label="Nome" ng-model="$ctrl.usuario.nome" tooltip="Nome do usu&aacute;rio" placeholder="Nome do usu&aacute;rio" w-desktop="4"></textfield>
+		<textfield name="txtUsu" label="Nome" ng-required="true" ng-model="$ctrl.usuario.nome" tooltip="Nome do usu&aacute;rio" placeholder="Nome do usu&aacute;rio" w-desktop="4"></textfield>
 		<textfield name="txtSbNomeUsu" ng-maxlength="6" ng-minlength="3" label="Sobrenome" ng-model="$ctrl.usuario.sobrenome" tooltip="Sobrenome do usu&aacute;rio" placeholder="Sobrenome do usu&aacute;rio"></textfield>
 	</div>
 	
 	<div class="row col-xs-12"> 
-	   <date name="dtNasc" ng-model="$ctrl.usuario.dtNascimento" ng-min="$ctrl.dataminima" ng-max="$ctrl.datamaxima" label="Data de nascimento"></date>
+	   <date name="dtNasc" ng-required="true" ng-model="$ctrl.usuario.dtNascimento" ng-min="$ctrl.dataminima" ng-max="$ctrl.datamaxima" label="Data de nascimento"></date>
 		<combobox name="cbxCursos" label="Curso" ng-required="true" ng-model="$ctrl.usuario.curso" options="$ctrl.cursos" w-desktop="3"></combobox>
 		<combobox name="cbxLocalidade" label="Localidade" ng-required="true" ng-model="$ctrl.usuario.local" options="$ctrl.localidades" option-id="id" option-description="cidade"  w-desktop="3"></combobox>
 	</div>
 
 	<div class="row col-xs-12">
-		<cep name="cep1" ng-model="$ctrl.usuario.cepUsu" ></cep>
+		<cep name="cep1" ng-required="true" ng-model="$ctrl.usuario.cepUsu" ></cep>
 		<cnpj name="cnpj1" ng-model="$ctrl.usuario.cnpjTrabalho" label="CNPJ do trabalho" ng-required="true" ></cnpj>
-		<hour name="hour1" ng-model="$ctrl.usuario.hora" ng-required="false" ></hour>
+		<hour name="hour1" ng-model="$ctrl.usuario.hora" ng-required="true" ></hour>
 	</div>
 	
 	<div class="row col-xs-12">
 		<telefone name="tel1" ng-model="$ctrl.usuario.telUsu" ></telefone>
-		<telefone name="tel4" label="Telefone Celular" ng-model="$ctrl.usuario.telUsu4" ddd="true" nono-digito="true" ></telefone>
+		<telefone name="tel4" ng-required="true" label="Telefone Celular" ng-model="$ctrl.usuario.telUsu4" ddd="true" nono-digito="true" ></telefone>
 		<telefone name="tel2" label="Telefone9" ng-model="$ctrl.usuario.telUsu2" nono-digito="true" ></telefone>
 		<telefone name="tel3" label="TelefoneDDD" ng-model="$ctrl.usuario.telUsu3" ddd="true" ></telefone>
 	</div>

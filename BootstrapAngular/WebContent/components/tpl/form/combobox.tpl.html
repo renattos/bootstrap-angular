@@ -1,12 +1,13 @@
-<div class="form-group" ng-class="$ctrl.applyWidth()" >
-	<label class="control-label" ng-if="$ctrl.label" for="{{$ctrl.name}}">
-   		{{$ctrl.label}}
+<div class="form-group {{$ctrl.applyWidth()}}" ng-class="{ 'has-error': $ctrl.viewForm[$ctrl.name].$touched && $ctrl.viewForm[$ctrl.name].$invalid}">
+	<label class="control-label" ng-if="::$ctrl.label" for="{{::$ctrl.name}}">
+   		{{::$ctrl.label}}
    		<span ng-if="$ctrl.required" style="color: red;">*</span>
    </label>
    
 	<select class="form-control input-sm" 
-	        id="{{$ctrl.name}}"
-     		title="{{$ctrl.tooltip}}"
+	        id="{{::$ctrl.name}}"
+	        name="{{::$ctrl.name}}"
+     		title="{{::$ctrl.tooltip}}"
 	        
 	        ng-options="bean as bean[$ctrl.optionDescription] for bean in $ctrl.options track by bean[$ctrl.optionId]" 
 	        
@@ -17,7 +18,7 @@
      		ng-readonly="$ctrl.readonly"
 	        >
 	</select>
-		
-	</div>
+	<div class="help-block" ng-messages="$ctrl.viewForm[$ctrl.name].$error" ng-if="$ctrl.viewForm[$ctrl.name].$touched && $ctrl.viewForm[$ctrl.name].$invalid">
+   		<div ng-messages-include="components/tpl/form/message-validations.tpl.html"></div>
+    </div>
 </div>
-<!-- ng-options="bean as bean.descricao for bean in $ctrl.options track by bean.codigo" -->
