@@ -33,7 +33,8 @@ OK        	- Escolher o dia
 OK        	- Implementar a troca de mês e ano
 OK        	- Bloquear digitar
 OK        	- range válido (limite inferior e/ou superior)
-			- Incluir um botão para atribuir valor nulo
+OK			- O componente não estava setando o valor no model
+OK			- Incluir um botão para atribuir valor nulo
 OK			- Clique em datas já selecionadas deverá fechar a popup
 OK			- Incluir as validations e suas mensagens
 OK    	- Combobox
@@ -50,6 +51,10 @@ OK			- Incluir as validations e suas mensagens
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc) 
 			- Incluir as validations e suas mensagens   		
         - period (date)
+        	- Implementar componente e permitir customizações de label
+        	- Implementar para cada date customizações do tipo requerido (para inicial e final)
+        	- A data final não poderá permitir selecionar uma data antes da data inicial
+        	- A data inicial não poderá permitir selecionar uma data após a data final
 OK    	- Grids
 OK			- Permitir seleção de multiplas linhas (checkbox do lado esquerdo)
 OK			- BUG: O check "Selecionar todos" não é desmarcado/marcado quando os itens são selecionados/desmarcados um a um.
