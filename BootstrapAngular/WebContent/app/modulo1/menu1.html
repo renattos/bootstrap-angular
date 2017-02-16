@@ -6,7 +6,9 @@
 		<textfield name="txtUsu" label="Nome" ng-required="true" ng-model="$ctrl.usuario.nome" tooltip="Nome do usu&aacute;rio" placeholder="Nome do usu&aacute;rio" w-desktop="4"></textfield>
 		<textfield name="txtSbNomeUsu" ng-maxlength="6" ng-minlength="3" label="Sobrenome" ng-model="$ctrl.usuario.sobrenome" tooltip="Sobrenome do usu&aacute;rio" placeholder="Sobrenome do usu&aacute;rio"></textfield>
 	</div>
-	
+	<div class="row col-xs-12"> 
+		<period name="prd" label="teste" ng-model="$ctrl.usuario.periodo" />
+	</div>
 	<div class="row col-xs-12"> 
 	   <date name="dtNasc" ng-required="true" ng-model="$ctrl.usuario.dtNascimento" ng-min="$ctrl.dataminima" ng-max="$ctrl.datamaxima" label="Data de nascimento"></date>
 		<combobox name="cbxCursos" label="Curso" ng-required="true" ng-model="$ctrl.usuario.curso" options="$ctrl.cursos" w-desktop="3"></combobox>

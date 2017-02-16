@@ -1139,6 +1139,213 @@ angular.module('components', ['ngMessages','platform'])
 		
 	}
 })
+.component('period',{
+	bindings: {
+		label: '@',
+		name: '@',
+		tooltip:'<',
+		placeholder:'<',
+		wPhone:'@',
+		wTablet:'@',
+		wDesktop:'@',
+		model: '=ngModel',
+		min:'=ngMin',
+		max:'=ngMax',
+		required: '=ngRequired',
+		disabled: '=ngDisabled'
+	},
+	require: {
+		modelCtrl: '^ngModel',
+		viewForm: '^form'
+	},
+	templateUrl: 'components/tpl/form/date/period.date.tpl.html',
+	controller: function($attrs){
+		var ctrl = this;
+		
+		if(!ctrl.name){
+			var strNgModel = $attrs.ngModel;
+			ctrl.name = strNgModel;
+		}
+		
+		if(!ctrl.label){
+			ctrl.label = 'Data2';
+		}
+		
+		ctrl.months = [
+		               {name: 'Janeiro', value: 0},{name: 'Fevereiro' , value:  1},{name: 'Março'    , value:  2},
+		               {name: 'Abril'  , value: 3},{name: 'Maio'      , value:  4},{name: 'Junho'    , value:  5},
+		               {name: 'Julho'  , value: 6},{name: 'Agosto'    , value:  7},{name: 'Setembro' , value:  8},
+		               {name: 'Outubro', value: 9},{name: 'Novembro'  , value: 10},{name: 'Dezembro' , value: 11},
+		               ];
+		
+		ctrl.weeks = [];
+		
+		ctrl.$onInit = function(){
+			
+			if(angular.isNumber(ctrl.model)){
+				ctrl.model = new Date(ctrl.model);
+			}
+			
+			ctrl.selectDate( ctrl.model );
+		}
+		
+		ctrl.defineVisible = function(dt){
+			
+			var date = dt;
+			
+			if(!date){
+				date = new Date();
+			}
+			
+			ctrl.visibleDate = date;			
+			ctrl.visibleMonth = ctrl.months[date.getMonth()];
+			ctrl.visibleYear = date.getFullYear();
+		}
+		
+		ctrl.defineCurrent = function(dt){
+			
+			var date = dt;
+			
+			if(!date){
+				date = new Date();
+			}
+			
+			
+			ctrl.defineVisible(date);
+			
+			ctrl.currentWeekDay = date.getDay();
+			ctrl.currentMonth = ctrl.months[date.getMonth()];
+			ctrl.currentYear = date.getFullYear();
+			
+			if(dt){
+				ctrl.currentDate = new Date(ctrl.currentYear, ctrl.currentMonth.value, date.getDate());
+				ctrl.textDate =  ( date.getDate() > 9 ? date.getDate() : '0' + date.getDate()) + 
+				'/' + ( ctrl.currentMonth.value >= 9 ? ctrl.currentMonth.value+1 : '0' + (ctrl.currentMonth.value+1)) + 
+				'/' + ctrl.currentYear;
+				ctrl.model = ctrl.currentDate;
+			} else {
+				ctrl.model = undefined;
+				ctrl.textDate = undefined;
+				ctrl.currentDate = undefined;
+			}
+			
+		}
+		
+		ctrl.previousMonth = function() {
+			var selectedDate = ctrl.visibleDate;
+			
+			if(!selectedDate){
+				selectedDate = new Date();
+			}
+			
+			var dateAux = new Date(selectedDate.getFullYear(), selectedDate.getMonth() - 1, '01')
+			
+			ctrl.printWeeks(dateAux);
+			
+			ctrl.defineVisible(dateAux);
+			
+		}
+		
+		ctrl.nextMonth = function() {
+			var selectedDate = ctrl.visibleDate;
+			
+			if(!selectedDate){
+				selectedDate = new Date();
+			}
+			
+			var dateAux = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, '01')
+			
+			ctrl.printWeeks(dateAux);
+			
+			ctrl.defineVisible(dateAux);
+			
+		}
+		
+		ctrl.previousYear = function() {
+			var selectedDate = ctrl.visibleDate;
+			
+			if(!selectedDate){
+				selectedDate = new Date();
+			}
+			
+			var dateAux = new Date(selectedDate.getFullYear() - 1, selectedDate.getMonth(), '01')
+			
+			ctrl.printWeeks(dateAux);
+			
+			ctrl.defineVisible(dateAux);
+			
+		}
+		
+		ctrl.nextYear = function() {
+			var selectedDate = ctrl.visibleDate;
+			
+			if(!selectedDate){
+				selectedDate = new Date();
+			}
+			
+			var dateAux = new Date(selectedDate.getFullYear() + 1, selectedDate.getMonth(), '01')
+			
+			ctrl.printWeeks(dateAux);
+			
+			ctrl.defineVisible(dateAux);
+			
+		}
+		
+		ctrl.selectDate = function(dt){
+			console.log('select date');
+			if(dt < ctrl.min || dt > ctrl.max ){
+				return;
+			}
+			
+			
+			var selectedDate = dt;
+			
+			if(!selectedDate){
+				selectedDate = new Date();
+			}
+			
+			ctrl.printWeeks(selectedDate);
+			
+			if(dt - ctrl.currentDate == 0){
+				ctrl.opencalendar = false;
+			}
+			
+			ctrl.defineCurrent(dt);
+		}
+		
+		ctrl.printWeeks = function(selectedDate){
+			var startDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), '01');
+			startDate.setDate(startDate.getDate() - startDate.getDay());
+			
+			ctrl.weeks = [];
+			for(var i=0;i < 6;i++){
+				var semana = []; 
+				for(var d=0; d < 7 ; d++){
+					semana.push(startDate);
+					startDate = new Date(startDate);
+					startDate.setDate(startDate.getDate() + 1);
+				}
+				ctrl.weeks.push(semana);
+			}
+		}
+		
+		ctrl.applyWidth = function(){
+			var classes = '';
+			
+			if(!ctrl.wPhone){ ctrl.wPhone = 12;} 
+			if(!ctrl.wTablet){ ctrl.wTablet = 12;} 
+			if(!ctrl.wDesktop){ ctrl.wDesktop = 6;}
+			
+			classes += ' col-xs-' + ctrl.wPhone;
+			classes += ' col-sm-' + ctrl.wTablet;
+			classes += ' col-md-' + ctrl.wDesktop;
+			
+			return classes;
+		}
+		
+		
+	}
+})
 .component('combobox',{
 	bindings: {
 		label: '@',

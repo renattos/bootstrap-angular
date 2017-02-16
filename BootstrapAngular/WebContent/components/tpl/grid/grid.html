@@ -2,7 +2,7 @@
   <table class="table table-condensed table-striped table-bordered table-hover grid-pagination">
 		<thead>
 			<tr class="info">
-			   <th ng-if="selectable == true  && model.data && model.data != 0">
+			   <th ng-if="selectable == true  && model.data && model.data != 0" style="width: 30px;">
 						<input type="checkbox" ng-model="model.all" ng-click="selectAll()" title="Selecionar todos os itens da página"/>
 				</th>
 			   <th ng-repeat="c in columns">{{::c.title}}</th>

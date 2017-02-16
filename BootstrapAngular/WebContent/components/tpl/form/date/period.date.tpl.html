@@ -1,0 +1,54 @@
+ <div ng-class="{ 'has-error': $ctrl.viewForm[$ctrl.name].$touched && $ctrl.viewForm[$ctrl.name].$invalid}">
+   <date name="dtNasc_de" label="{{$ctrl.label}}" ng-required="true" ng-model="$ctrl.usuario.periodo.inicio"  ng-max="$ctrl.usuario.periodo.fim" label="De"></date>
+   <date name="dtNasc_ate" label="{{$ctrl.label}}" ng-required="true" ng-model="$ctrl.usuario.periodo.fim" ng-min="$ctrl.usuario.periodo.inicio" label="Ate"></date>
+ </div> 
+<!-- 
+ 
+  <div class="form-group {{$ctrl.applyWidth()}}" ng-class="{ 'has-error': $ctrl.viewForm[$ctrl.name].$touched && $ctrl.viewForm[$ctrl.name].$invalid}">
+   <label ng-if="$ctrl.label" for="{{::$ctrl.name}}">
+   		{{::$ctrl.label}}
+   		<span ng-if="$ctrl.required" style="color: red;">*</span>
+   </label>
+   
+   <div class="input-group">
+	    <input type="text" ng-model="$ctrl.textDate" class="form-control input-sm" name="{{::$ctrl.name}}" title="{{::$ctrl.tooltip}}" ng-required="$ctrl.required" ng-readonly="true" style="background-color: white;">
+	    <div class="input-group-addon" ng-click="$ctrl.opencalendar = true">
+	        <span class="glyphicon glyphicon-calendar"></span>
+	    </div>
+	</div>
+	<div class="help-block" ng-messages="$ctrl.viewForm[$ctrl.name].$error" ng-if="$ctrl.viewForm[$ctrl.name].$touched && $ctrl.viewForm[$ctrl.name].$invalid">
+   		<div ng-messages-include="components/tpl/form/message-validations.tpl.html"></div>
+  	</div>
+	<div class="windowModal" ng-if="$ctrl.opencalendar">
+		<div class="calendarcontainer col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4"> 
+			<div class="calendar">
+				 
+				<div style="width: 50%" class="pull-left">
+					<span class="glyphicon glyphicon-chevron-left" ng-click="$ctrl.previousMonth()"></span>
+					<label>{{$ctrl.visibleMonth.name}}</label>
+					<span class="glyphicon glyphicon-chevron-right" ng-click="$ctrl.nextMonth()"></span>
+				</div>
+				<div style="width: 50%; text-align: right;" class="pull-right">
+					<span class="glyphicon glyphicon-chevron-down"  ng-click="$ctrl.previousYear()"></span>
+					<label>{{$ctrl.visibleYear}}</label>
+					<span class="glyphicon glyphicon-chevron-up" ng-click="$ctrl.nextYear()"></span>
+				</div>
+				
+				 <table class="table table-responsive">
+						<tr style="color: red;" class="notextselect">
+							<th>D</th><th>S</th><th>T</th><th>Q</th><th>Q</th><th>S</th><th>S</th>
+						</tr>
+						<tr ng-repeat="s in $ctrl.weeks" class="notextselect">
+						<td ng-repeat="d in s" 
+							ng-click="$ctrl.selectDate(d)"
+							ng-class="{info: $ctrl.currentDate.getTime() == d.getTime(), invalidDate: (d < $ctrl.min || d > $ctrl.max ), calendarDay: !(d < $ctrl.min || d > $ctrl.max )}">{{d.getDate()}}</td>
+							
+						</tr>
+				</table> 
+				<button class="btn btn-info" ng-click="$ctrl.opencalendar = false">OK</button>
+				<button class="btn btn-info" ng-click="$ctrl.selectDate();$ctrl.opencalendar = false;">Limpar</button>
+			 </div> 
+		</div>
+	</div>
+ </div> 
+  -->
