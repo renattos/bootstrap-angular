@@ -478,7 +478,7 @@ angular.module('components', ['ngMessages','platform'])
 			var strNgModel = $attrs.ngModel;
 			ctrl.name = strNgModel;
 		}
-		
+
 		if(!ctrl.nonoDigito){
 			ctrl.nonoDigito = false;
 		}
@@ -612,7 +612,7 @@ angular.module('components', ['ngMessages','platform'])
 			var strNgModel = $attrs.ngModel;
 			ctrl.name = strNgModel;
 		}
-		
+
 		if(!ctrl.label){
 			ctrl.label = 'CEP'
 		}
@@ -687,7 +687,7 @@ angular.module('components', ['ngMessages','platform'])
 			var strNgModel = $attrs.ngModel;
 			ctrl.name = strNgModel;
 		}
-		
+
 		if(!ctrl.label){
 			ctrl.label = 'CPF'
 		}
@@ -852,7 +852,7 @@ angular.module('components', ['ngMessages','platform'])
 			var strNgModel = $attrs.ngModel;
 			ctrl.name = strNgModel;
 		}
-		
+
 		if(!ctrl.label){
 			ctrl.label = 'Hora'
 		}
@@ -974,7 +974,12 @@ angular.module('components', ['ngMessages','platform'])
 		ctrl.weeks = [];
 		
 		ctrl.$onInit = function(){
-			ctrl.selectDate( );
+			
+			if(angular.isNumber(ctrl.model)){
+				ctrl.model = new Date(ctrl.model);
+			}
+			
+			ctrl.selectDate( ctrl.model );
 		}
 		
 		ctrl.defineVisible = function(dt){
@@ -990,7 +995,7 @@ angular.module('components', ['ngMessages','platform'])
 			ctrl.visibleYear = date.getFullYear();
 		}
 
-		ctrl.defineCurrent = function(dt, markCurrentDate){
+		ctrl.defineCurrent = function(dt){
 			
 			var date = dt;
 			
@@ -1007,7 +1012,14 @@ angular.module('components', ['ngMessages','platform'])
 			
 			if(dt){
 				ctrl.currentDate = new Date(ctrl.currentYear, ctrl.currentMonth.value, date.getDate());
-				ctrl.textDate = date.getDate() + '/' + ( ctrl.currentMonth.value >= 9 ? ctrl.currentMonth.value+1 : '0' + (ctrl.currentMonth.value+1)) + '/' + ctrl.currentYear;
+				ctrl.textDate =  ( date.getDate() > 9 ? date.getDate() : '0' + date.getDate()) + 
+								'/' + ( ctrl.currentMonth.value >= 9 ? ctrl.currentMonth.value+1 : '0' + (ctrl.currentMonth.value+1)) + 
+								'/' + ctrl.currentYear;
+				ctrl.model = ctrl.currentDate;
+			} else {
+				ctrl.model = undefined;
+				ctrl.textDate = undefined;
+				ctrl.currentDate = undefined;
 			}
 			
 		}

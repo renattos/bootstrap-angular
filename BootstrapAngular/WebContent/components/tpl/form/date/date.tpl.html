@@ -14,7 +14,6 @@
    		<div ng-messages-include="components/tpl/form/message-validations.tpl.html"></div>
   	</div>
 	<div class="windowModal" ng-if="$ctrl.opencalendar">
-		<!-- <div class="calendarcontainer col-xs-offset-1 col-sm-offset-5 col-md-offset-4"> -->   <!-- col-xs-12 col-md-4 col-md-offset-4" -->
 		<div class="calendarcontainer col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">   <!-- col-xs-12 col-md-4 col-md-offset-4" -->
 			<div class="calendar">
 				 
@@ -41,6 +40,7 @@
 						</tr>
 				</table> 
 				<button class="btn btn-info" ng-click="$ctrl.opencalendar = false">OK</button>
+				<button class="btn btn-info" ng-click="$ctrl.selectDate();$ctrl.opencalendar = false;">Limpar</button>
 			 </div> 
 		</div>
 	</div>
