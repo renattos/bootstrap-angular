@@ -27,7 +27,9 @@
 	</div>
 	
 	<button type="button" class="btn btn-info input-sm" ng-click="$ctrl.create($ctrl.usuario)">SALVAR</button>
-	
+	<br>---------------------------------------------------------------------------<br>
+	{{$ctrl.usuario}}
+	<br>---------------------------------------------------------------------------<br>
 	<grid ng-model="$ctrl.gridusuario" selectable="true" on-page-change="$ctrl.load">
 		<column title="CPF" field="cpf"/>
 		<column title="Nome" field="nome"/>
