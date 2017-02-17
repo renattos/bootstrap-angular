@@ -102,10 +102,13 @@ angular.module('modulo1', [
 	      {codigo:3,descricao:'Engenharia Civil'}
 	   ]
 	
+	
+	
 	ctrl.localidades = [
 			{id:1, cidade:'Distrito Federal'},
 			{id:2, cidade:'Rio de Janeiro'},
-			{id:3, cidade:'São Paulo'}
+			{id:3, cidade:'São Paulo'},
+			{id:4, cidade:'Uma localidade qualquer localizada bem distante no Brasil desde que fique dentro do territorio nacional'}
 	     ]
 })
 .controller('modulo1.Menu2Ctrl', function() {

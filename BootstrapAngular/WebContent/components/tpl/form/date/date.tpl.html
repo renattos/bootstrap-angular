@@ -1,10 +1,11 @@
  <div class="form-group {{$ctrl.applyWidth()}}" ng-class="{ 'has-error': $ctrl.viewForm[$ctrl.name].$touched && $ctrl.viewForm[$ctrl.name].$invalid}">
-   <label ng-if="$ctrl.label" for="{{::$ctrl.name}}">
+   <label for="{{::$ctrl.name}}">
    		{{::$ctrl.label}}
-   		<span ng-if="$ctrl.required" style="color: red;">*</span>
+   		<span ng-if="$ctrl.required " style="color: red;">{{$ctrl.label ? '*' : '&nbsp;'}}</span>
    </label>
    
    <div class="input-group">
+   		<div ng-if="$ctrl.addonLabel" class="input-group-addon  input-sm notextselect">{{::$ctrl.addonLabel}} </div>
 	    <input type="text" ng-model="$ctrl.textDate" class="form-control input-sm" name="{{::$ctrl.name}}" title="{{::$ctrl.tooltip}}" ng-required="$ctrl.required" ng-readonly="true" style="background-color: white;">
 	    <div class="input-group-addon" ng-click="$ctrl.opencalendar = true">
 	        <span class="glyphicon glyphicon-calendar"></span>

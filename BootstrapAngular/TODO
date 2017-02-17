@@ -1,4 +1,5 @@
 OK	- Criar Layout de Formulário
+	- Implementar roteamento por componentes
     - Reduzir o número de watchers da página.
     - Criar componentes:
 OK  	- Caixa de texto
@@ -37,6 +38,7 @@ OK			- O componente não estava setando o valor no model
 OK			- Incluir um botão para atribuir valor nulo
 OK			- Clique em datas já selecionadas deverá fechar a popup
 OK			- Incluir as validations e suas mensagens
+		    - Criar validation para quando o período vir inválido (model fora do range determinado)
 OK    	- Combobox
 OK    		- Possibilitar indicar o campo ID e a Descrição das opções.
 			- Quando o campo não for obrigatório, incluir uma opção em branco para seleção.
@@ -51,10 +53,12 @@ OK			- Incluir as validations e suas mensagens
 			- criar propriedade para os eventHandlers (ngclick, ngchange, blur etc) 
 			- Incluir as validations e suas mensagens   		
         - period (date)
-        	- Implementar componente e permitir customizações de label
+			- permitir customizações de label
         	- Implementar para cada date customizações do tipo requerido (para inicial e final)
-        	- A data final não poderá permitir selecionar uma data antes da data inicial
-        	- A data inicial não poderá permitir selecionar uma data após a data final
+OK        	- A data final não poderá permitir selecionar uma data antes da data inicial
+OK        	- A data inicial não poderá permitir selecionar uma data após a data final
+        	- Permitir seleção de período apenas dentro de um outro período.
+        	
 OK    	- Grids
 OK			- Permitir seleção de multiplas linhas (checkbox do lado esquerdo)
 OK			- BUG: O check "Selecionar todos" não é desmarcado/marcado quando os itens são selecionados/desmarcados um a um.
@@ -63,9 +67,7 @@ OK			- Paginação
 			- Criar coluna das actions
 			- Criar um renderer para exibir datas.
 OK    		- Permitir customização de uma célula por meio de um componente.
-    	- SimNao (radio button)
-		- money
-    	- Popups
+OK    	- Popups
 OK    	- Tabs
 			- Ver se funciona.
 		- numero (int, decimal) (textbased-template) (o model deve receber um Number)
