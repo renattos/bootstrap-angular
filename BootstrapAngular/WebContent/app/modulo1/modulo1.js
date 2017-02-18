@@ -3,7 +3,26 @@ angular.module('modulo1', [
         'components'
 ])
 .run(['PlatformService', function(PlatformService) {
+	PlatformService.registerModule({
+		label: 'Usuarios', 
+		state: 'usuarios',
+		url: '/usuarios',
+		component: 'usuariosview'
+	});
 	
+}])
+.component('usuariosview', {
+	bindings: {},
+	templateUrl: 'app/modulo1/menu2.html',
+	controller: function(){
+		var ctrl = this;
+		ctrl.teste = "Hello"
+		
+	}
+})
+
+
+/*
 	PlatformService.registerModule({
 		label: 'Modulo 1', 
 		state: 'modulo1',
@@ -23,7 +42,7 @@ angular.module('modulo1', [
 			  ]
 		  }
 	});
-
+	
 	PlatformService.registerModule({
 		parentState: 'modulo1',
 		label: 'Menu 1.1 (Modulo 1)', 
@@ -120,3 +139,4 @@ angular.module('modulo1', [
 	var ctrl = this;
 	ctrl.nome = "teste do controller";
 })
+*/

@@ -166,10 +166,16 @@ PlatformModule.config(function($stateProvider, $urlRouterProvider){
 				url: config.url,
 				views: {
 					'main@' : {
+						  
+							template: '<' + config.component + '/>'
+					}
+						/*{
+						 * config.component
 						templateUrl: config.templateUrl,
 						controllerAs: '$ctrl',
 						controller: config.controller
-					}
+						
+					}*/
 				}
 			})
 			
