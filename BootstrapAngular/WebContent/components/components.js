@@ -1146,8 +1146,6 @@ angular.module('components', ['ngMessages','platform'])
 		wTablet:'@',
 		wDesktop:'@',
 		model: '=ngModel',
-		min:'=ngMin',
-		max:'=ngMax',
 		required: '=ngRequired',
 		disabled: '=ngDisabled'
 	},
@@ -1163,8 +1161,6 @@ angular.module('components', ['ngMessages','platform'])
 			var strNgModel = $attrs.ngModel;
 			ctrl.name = strNgModel;
 		}
-		
-		
 		
 		ctrl.applyWidth = function(){
 			var classes = '';

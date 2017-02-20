@@ -6,8 +6,7 @@
    		 ng-required="true" 
    		 ng-model="$ctrl.model.inicio"  
    		 ng-min="$ctrl.min"
-   		 ng-max="($ctrl.max - $ctrl.model.fim <= 0) ? $ctrl.max :  $ctrl.model.fim " >
-   		 <!-- ng-max="$ctrl.model.fim"> -->
+   		 ng-max="$ctrl.model.fim">
    </date>
    
    <date name="{{$ctrl.name}}_ate" 
@@ -15,7 +14,7 @@
          addon-label="At&eacute;"  
          ng-required="true" 
          ng-model="$ctrl.model.fim" 
-         ng-min="$ctrl.min - $ctrl.model.inicio <= 0 ? $ctrl.min : $ctrl.model.inicio" >
+         ng-min="$ctrl.model.inicio" >
    </date>
    
  </div> 
